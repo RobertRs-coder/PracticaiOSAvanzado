@@ -14,6 +14,8 @@
 		230E885E28C04296007155BA /* PracticaFundamentosiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */; };
 		230E886828C04296007155BA /* PracticaFundamentosiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886728C04296007155BA /* PracticaFundamentosiOSUITests.swift */; };
 		230E886A28C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */; };
+		234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234AB70128CEA76B00562E81 /* TableViewCell.swift */; };
+		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
@@ -49,6 +51,8 @@
 		230E886328C04296007155BA /* PracticaFundamentosiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFundamentosiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		230E886728C04296007155BA /* PracticaFundamentosiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITests.swift; sourceTree = "<group>"; };
 		230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		234AB70128CEA76B00562E81 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,15 @@
 			path = PracticaFundamentosiOSUITests;
 			sourceTree = "<group>";
 		};
+		234AB70528CEA77300562E81 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				234AB70128CEA76B00562E81 /* TableViewCell.swift */,
+				234AB70228CEA76B00562E81 /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		236BD50D28CE9C1A00687773 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 		236BD50E28CE9C2200687773 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				234AB70528CEA77300562E81 /* TableViewCell */,
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
 				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 			);
@@ -278,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */,
+				234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */,
 				230E885028C04296007155BA /* Assets.xcassets in Resources */,
 				236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */,
 				236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */,
@@ -305,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */,
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
