@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PracticaFundamentosiOS" customModuleProvider="target">
             <connections>
+                <outlet property="passwordLabel" destination="sDG-12-j1r" id="RU8-9W-cLy"/>
+                <outlet property="passwordTextField" destination="6mt-xU-fQH" id="l3M-Js-Go1"/>
+                <outlet property="userLabel" destination="75w-dT-a1i" id="Zxg-HT-qQ5"/>
+                <outlet property="userTextField" destination="zCK-TW-aWD" id="ZLn-ZS-2t7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,6 +51,9 @@
                     <rect key="frame" x="177" y="495" width="60" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                    <connections>
+                        <action selector="loginOnTap:" destination="-1" eventType="touchUpInside" id="CVl-yk-7NP"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
