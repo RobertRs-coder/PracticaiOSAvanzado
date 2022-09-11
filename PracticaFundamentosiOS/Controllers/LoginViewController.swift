@@ -17,7 +17,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = "Heroes"
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -33,6 +36,8 @@ class LoginViewController: UIViewController {
     */
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
+        let nextViewController = HeroesTableViewController()
+        navigationController?.setViewControllers([nextViewController], animated: true)
     }
     
 }

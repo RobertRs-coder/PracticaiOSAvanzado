@@ -16,6 +16,8 @@
 		230E886A28C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
+		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
+		236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
+		236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroesTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
+				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				236BD51228CE9C7400687773 /* LoginViewController.swift */,
+				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */,
 				230E885028C04296007155BA /* Assets.xcassets in Resources */,
 				236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */,
+				236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +308,7 @@
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
+				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
