@@ -36,6 +36,16 @@ class LoginViewController: UIViewController {
     */
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
+        let model = NetworkModel()
+        let user = userTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        guard !user.isEmpty, !password.isEmpty else { return }
+        
+        model.login(user: user, password: password) { token, _ in
+            print("Your token is: "\(token)")
+        }
+        
         let nextViewController = HeroesTableViewController()
         navigationController?.setViewControllers([nextViewController], animated: true)
     }

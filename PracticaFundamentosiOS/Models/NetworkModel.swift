@@ -60,9 +60,8 @@ class NetworkModel {
                 return
             }
             
-            self.token = token
+            completion(token, nil)
         }
-        
         task.resume()
     }
 }
