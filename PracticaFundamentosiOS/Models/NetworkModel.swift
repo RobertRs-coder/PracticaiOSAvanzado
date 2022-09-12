@@ -12,10 +12,14 @@ enum NetworkError: Error {
     case dataFormat
     case otherError
     case noData
+    case errorCode(Int?)
+    case tokenFormatError
 }
 
 class NetworkModel {
     let server = "https://vapor2022.herokuapp.com"
+    var token: String = ""
+    
     func login(user: String, password: String, completion: @escaping (String?, NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/api/auth/login") else {
             completion(nil, .malformedURL)
@@ -45,7 +49,20 @@ class NetworkModel {
                 return
             }
             
-      
+            guard let httpResponse = (response as? HTTPURLResponse),
+                  httpResponse.statusCode == 200 else {
+                completion(nil, .errorCode((response as? HTTPURLResponse)?.statusCode ))
+                return
+            }
+            
+            guard let token = String(data: data, encoding: .utf8) else {
+                completion(nil, .tokenFormatError)
+                return
+            }
+            
+            self.token = token
         }
+        
+        task.resume()
     }
 }
