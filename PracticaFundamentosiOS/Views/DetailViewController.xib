@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="PracticaFundamentosiOS" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionTextView" destination="fTZ-h0-9x9" id="BiR-mk-BGU"/>
+                <outlet property="imageView" destination="LVo-uh-Qip" id="NEQ-po-tul"/>
+                <outlet property="nameLabel" destination="Oqb-bL-l7B" id="kiE-zX-gNu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LVo-uh-Qip">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LVo-uh-Qip">
                     <rect key="frame" x="0.0" y="44" width="414" height="250"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="250" id="LiX-pS-jh7"/>

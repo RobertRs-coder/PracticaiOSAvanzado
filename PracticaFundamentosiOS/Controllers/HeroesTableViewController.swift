@@ -47,6 +47,10 @@ class HeroesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = DetailViewController ()
+        nextViewController.nameLabel?.text = "IndexPath: \(indexPath)"
+        nextViewController.descriptionTextView?.text = "IndexPath: \(indexPath)"
+//        nextViewController.imageView.image = UIImage()
+        
         navigationController?.pushViewController(nextViewController, animated: true)
     }
     

@@ -9,6 +9,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    //MARK: IBOutlets
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
