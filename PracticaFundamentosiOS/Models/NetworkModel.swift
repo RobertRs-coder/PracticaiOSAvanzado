@@ -74,7 +74,7 @@ class NetworkModel {
             completion(nil, .malformedURL)
             return
         }
-        guard let token = token else {
+        guard let token = self.token else {
             completion(nil, .otherError)
             return
             
@@ -82,7 +82,7 @@ class NetworkModel {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
+        urlRequest.setValue("aplication/json", forHTTPHeaderField: "Content-Type")
         
         struct Body: Encodable {
             let name: String
