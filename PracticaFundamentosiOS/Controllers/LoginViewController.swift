@@ -48,10 +48,10 @@ class LoginViewController: UIViewController {
             guard let token = token, !token.isEmpty else {
                 return
             }
-           
+            DispatchQueue.main.async {
                 let nextViewController = HeroesTableViewController()
                 self.navigationController?.setViewControllers([nextViewController], animated: true)
-            
+            }
         }
     }
 }
