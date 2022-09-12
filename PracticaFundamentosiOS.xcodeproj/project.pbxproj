@@ -16,6 +16,8 @@
 		230E886A28C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */; };
 		234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234AB70128CEA76B00562E81 /* TableViewCell.swift */; };
 		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
+		23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */; };
+		23532BFD28CEB9AE00C23C60 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
@@ -53,6 +55,8 @@
 		230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		234AB70128CEA76B00562E81 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				234AB70528CEA77300562E81 /* TableViewCell */,
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
 				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
+				23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			children = (
 				236BD51228CE9C7400687773 /* LoginViewController.swift */,
 				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
+				23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */,
+				23532BFD28CEB9AE00C23C60 /* DetailViewController.xib in Resources */,
 				234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */,
 				230E885028C04296007155BA /* Assets.xcassets in Resources */,
 				236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */,
@@ -323,6 +330,7 @@
 				234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */,
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
+				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
 			);
