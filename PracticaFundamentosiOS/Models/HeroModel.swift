@@ -7,8 +7,10 @@
 
 import UIKit
 
-struct Hero {
-    let image: UIImage
+struct Hero: Decodable {
+    let id: String
     let name: String
     let description: String
+    let phot: URL
+    let favorite: Bool
 }

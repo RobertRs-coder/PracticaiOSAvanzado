@@ -8,7 +8,10 @@
 import UIKit
 
 class HeroesTableViewController: UITableViewController {
-        
+    
+    //MARK: Constants
+    let heroes: [Hero] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,26 +19,10 @@ class HeroesTableViewController: UITableViewController {
         navigationController?.navigationBar.isHidden = false
         
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+     
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
-    }
-
-
+    
+    //Insert Cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
             return UITableViewCell()
@@ -47,15 +34,25 @@ class HeroesTableViewController: UITableViewController {
         return cell
     }
 
-
+    //Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let hero = Hero(image: UIImage(systemName: "pencil.circle") ?? UIImage(),
-                        name: "IndexPath: \(indexPath)",
-                        description: "IndexPath: \(indexPath)")
+       
         let nextViewController = DetailViewController ()
-        nextViewController.set(model: hero)
+  
         
         navigationController?.pushViewController(nextViewController, animated: true)
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return heroes.count
     }
     
 }

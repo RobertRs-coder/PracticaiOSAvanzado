@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
         
         self.nameLabel.text = hero.name
         self.descriptionTextView.text = hero.description
-        self.imageView.image = hero.image
+//        self.imageView.image = hero.image
     }
     
     func set(model: Hero) {
