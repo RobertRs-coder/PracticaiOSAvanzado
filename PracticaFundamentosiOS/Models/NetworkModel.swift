@@ -28,6 +28,10 @@ class NetworkModel {
         
         let base64LoginString = loginData.base64EncodedString()
         
-        var urlRequest
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+        
+        
     }
 }
