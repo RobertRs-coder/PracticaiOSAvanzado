@@ -69,25 +69,24 @@ class NetworkModel {
         task.resume()
     }
     
-    func getHeroes(name: String = "", completion: @escaping ([Hero]?, NetworkError?) -> Void) {
-        guard let url = URL(string: "\(server)/api/heroes/all") else {
-            completion(nil, .malformedURL)
+    func getHeroes(name: String = "", completion: @escaping ([Hero], NetworkError?) -> Void) {
+        guard let url = URL(string: "\(server)/api/heros/all") else {
+            completion([], .malformedURL)
             return
         }
         guard let token = self.token else {
-            completion(nil, .otherError)
+            completion([], .otherError)
             return
             
         }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.setValue("aplication/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         struct Body: Encodable {
             let name: String
         }
-        
         let body = Body(name: name)
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)

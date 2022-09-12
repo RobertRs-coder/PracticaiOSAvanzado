@@ -25,11 +25,14 @@ class HeroesTableViewController: UITableViewController {
         //Network call
         let networkModel =  NetworkModel.shared
         
-        networkModel.getHeroes { heroes, _ in
-            self.heroes = heroes
-            tableView.reloadData()
+        networkModel.getHeroes { [weak self] heroes, _ in
+            
+            self?.heroes = heroes
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
-     
     }
     
     //Insert Cell
@@ -39,21 +42,16 @@ class HeroesTableViewController: UITableViewController {
         }
         
         // Configure the cell
-        cell.heroName.text = "IndexPath: \(indexPath)"
+        cell.heroName.text = heroes[indexPath.row].name
         
         return cell
     }
 
     //Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let hero = Hero(id: "1985A353-157F-4C0B-A789-FD5B4F8DABDB",
-                        name: "Mr. Satán",
-                        description: "Mr. Satán es un charlatán fanfarrón, capaz de manipular a las masas. Pero en realidad es cobarde cuando se da cuenta que no puede contra su adversario como ocurrió con Androide 18 o Célula. Siempre habla más de la cuenta, pero en algún momento del combate empieza a suplicar. Androide 18 le ayuda a fingir su victoria a cambio de mucho dinero. Él acepta el trato porque no podría soportar que todo el mundo le diera la espalda por ser un fraude.",
-                        photo: URL(string: "https://cdn.alfabetajuega.com/alfabetajuega/2020/06/dragon-ball-satan.jpg?width=300")!,
-                        favorite: false)
         let nextViewController = DetailViewController ()
   
-        nextViewController.set(model: hero)
+        nextViewController.set(model: heroes[indexPath.row])
         
         navigationController?.pushViewController(nextViewController, animated: true)
     }
@@ -67,7 +65,7 @@ class HeroesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5 //heroes.count
+        return heroes.count
     }
     
 }

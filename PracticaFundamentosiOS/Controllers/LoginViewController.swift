@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
-        let model = NetworkModel()
+        let model = NetworkModel.shared
         let user = userTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
