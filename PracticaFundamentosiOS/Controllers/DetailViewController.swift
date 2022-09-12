@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+struct Hero {
+    let image: UIImage
+    let name: String
+    let description: String
+}
+
 class DetailViewController: UIViewController {
 
     //MARK: IBOutlets
@@ -14,22 +21,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    //MARK: Variables
+    private var hero: Hero?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let hero = hero else {
+            return
+        }
+        
+        self.nameLabel.text = hero.name
+        self.descriptionTextView.text = hero.description
+        self.imageView.image = hero.image
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func set(model: Hero) {
+        hero = model
     }
-    */
 
 }
