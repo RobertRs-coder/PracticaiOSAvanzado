@@ -11,6 +11,6 @@ struct Hero: Decodable {
     let id: String
     let name: String
     let description: String
-    let phot: URL
+    let photo: URL
     let favorite: Bool
 }
