@@ -18,7 +18,9 @@ enum NetworkError: Error {
 
 class NetworkModel {
     let server = "https://vapor2022.herokuapp.com"
-    var token: String = ""
+    var token: String?
+    static let shared = NetworkModel()
+    
     
     func login(user: String, password: String, completion: @escaping (String?, NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/api/auth/login") else {
@@ -59,6 +61,7 @@ class NetworkModel {
                 completion(nil, .tokenFormatError)
                 return
             }
+            self.token = token
             
             completion(token, nil)
         }

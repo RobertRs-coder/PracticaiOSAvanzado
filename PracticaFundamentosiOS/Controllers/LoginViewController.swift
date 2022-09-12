@@ -43,11 +43,15 @@ class LoginViewController: UIViewController {
         guard !user.isEmpty, !password.isEmpty else { return }
         
         model.login(user: user, password: password) { token, _ in
-            print("Your token is: "\(token)")
+            print("Your token is: \(token ?? "")")
+            
+            guard let token = token, !token.isEmpty else {
+                return
+            }
+           
+                let nextViewController = HeroesTableViewController()
+                self.navigationController?.setViewControllers([nextViewController], animated: true)
+            
         }
-        
-        let nextViewController = HeroesTableViewController()
-        navigationController?.setViewControllers([nextViewController], animated: true)
     }
-    
 }
