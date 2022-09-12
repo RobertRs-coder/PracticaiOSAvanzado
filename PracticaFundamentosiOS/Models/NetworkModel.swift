@@ -67,4 +67,31 @@ class NetworkModel {
         }
         task.resume()
     }
+    
+    func getHeroes(name: String = "", completion: @escaping ([Hero]?, NetworkError?) -> Void) {
+        guard let url = URL(string: "\(server)/api/heroes/all") else {
+            completion(nil, .malformedURL)
+            return
+        }
+        guard let token = token else {
+            completion(nil, .otherError)
+            return
+            
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        
+        struct Body: Encodable {
+            let name: String
+        }
+        
+        let body = Body(name: name)
+        
+        urlRequest.httpBody = try? JSONEncoder().encode(body)
+        
+       
+            
+        }
 }

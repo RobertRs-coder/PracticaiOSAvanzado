@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
             guard let token = token, !token.isEmpty else {
                 DispatchQueue.main.async {
                     self?.loginButton.isEnabled = true
+                    self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
                 }
                 return
