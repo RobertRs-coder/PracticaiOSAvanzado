@@ -18,6 +18,7 @@
 		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
 		23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */; };
 		23532BFD28CEB9AE00C23C60 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */; };
+		235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A9BA828CF92E20055BCA5 /* HeroModel.swift */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
@@ -57,6 +58,7 @@
 		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		235A9BA828CF92E20055BCA5 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		236BD50D28CE9C1A00687773 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				235A9BA828CF92E20055BCA5 /* HeroModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
+				235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
 			);

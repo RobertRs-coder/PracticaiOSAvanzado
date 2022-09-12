@@ -7,13 +7,6 @@
 
 import UIKit
 
-
-struct Hero {
-    let image: UIImage
-    let name: String
-    let description: String
-}
-
 class DetailViewController: UIViewController {
 
     //MARK: IBOutlets
