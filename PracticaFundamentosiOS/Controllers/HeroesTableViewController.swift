@@ -10,7 +10,7 @@ import UIKit
 class HeroesTableViewController: UITableViewController {
     
     //MARK: Constants
-    let heroes: [Hero] = []
+    var heroes: [Hero] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,17 @@ class HeroesTableViewController: UITableViewController {
         self.title = "Heroes"
         navigationController?.navigationBar.isHidden = false
         
-        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: "TableViewCell",
+                                 bundle: nil),
+                           forCellReuseIdentifier: "cell")
+        
+        //Network call
+        let networkModel =  NetworkModel.shared
+        
+        networkModel.getHeroes { heroes, _ in
+            self.heroes = heroes
+            tableView.reloadData()
+        }
      
     }
     
