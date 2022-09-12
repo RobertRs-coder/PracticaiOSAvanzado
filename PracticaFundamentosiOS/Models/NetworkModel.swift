@@ -14,6 +14,7 @@ enum NetworkError: Error {
     case noData
     case errorCode(Int?)
     case tokenFormatError
+    case decodingError
 }
 
 class NetworkModel {
@@ -91,7 +92,31 @@ class NetworkModel {
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
-       
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard error == nil else {
+                completion([], .otherError)
+                return
+            }
+            
+            guard let data = data else {
+                completion([], .noData)
+                return
+            }
+            
+            guard let httpResponse = (response as? HTTPURLResponse),
+                  httpResponse.statusCode == 200 else {
+                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
+                return
+            }
+            
+            guard let heroesResponse = try? JSONDecoder().decode([Hero].self, from: data) else {
+                completion([], .decodingError)
+                return
+            }
+            
+            completion(heroesResponse, nil)
+        }
+        task.resume()
             
         }
 }
