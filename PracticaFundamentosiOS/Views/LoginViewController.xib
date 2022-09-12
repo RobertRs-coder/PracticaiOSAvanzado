@@ -26,24 +26,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75w-dT-a1i">
-                    <rect key="frame" x="50" y="331" width="36" height="21"/>
+                    <rect key="frame" x="80" y="331" width="36" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="systemBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-12-j1r">
-                    <rect key="frame" x="50" y="405" width="74" height="21"/>
+                    <rect key="frame" x="80" y="405" width="74" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-TW-aWD">
-                    <rect key="frame" x="50" y="357" width="314" height="34"/>
+                    <rect key="frame" x="80" y="357" width="254" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6mt-xU-fQH">
-                    <rect key="frame" x="50" y="431" width="314" height="34"/>
+                    <rect key="frame" x="80" y="431" width="254" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
@@ -70,8 +70,8 @@
                 <constraint firstAttribute="trailing" secondItem="h4s-Uv-EsY" secondAttribute="trailing" id="UMQ-JT-JOA"/>
                 <constraint firstItem="abw-nY-IVA" firstAttribute="top" secondItem="6mt-xU-fQH" secondAttribute="bottom" constant="30" id="Xhb-te-Yuw"/>
                 <constraint firstAttribute="top" secondItem="h4s-Uv-EsY" secondAttribute="bottom" constant="-896" id="eDG-bV-qxu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6mt-xU-fQH" secondAttribute="trailing" constant="50" id="jWu-LD-rG1"/>
-                <constraint firstItem="6mt-xU-fQH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="kd5-Hz-U1o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6mt-xU-fQH" secondAttribute="trailing" constant="80" id="jWu-LD-rG1"/>
+                <constraint firstItem="6mt-xU-fQH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="80" id="kd5-Hz-U1o"/>
                 <constraint firstItem="6mt-xU-fQH" firstAttribute="leading" secondItem="zCK-TW-aWD" secondAttribute="leading" id="kvw-VK-mYh"/>
                 <constraint firstItem="6mt-xU-fQH" firstAttribute="leading" secondItem="sDG-12-j1r" secondAttribute="leading" id="rNc-Yk-Th3"/>
                 <constraint firstItem="6mt-xU-fQH" firstAttribute="trailing" secondItem="zCK-TW-aWD" secondAttribute="trailing" id="xDq-zV-JIs"/>
