@@ -64,15 +64,16 @@ class LoginViewController: UIViewController {
             LocalDataModel.saveToken(token: token)
             
             DispatchQueue.main.async {
+                self?.loginButton.isEnabled = true
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
                 self?.goToNextViewContoller()
             }
         }
     }
     
     func goToNextViewContoller(){
-        self.loginButton.isEnabled = true
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
+
         let nextViewController = HeroesTableViewController()
         self.navigationController?.setViewControllers([nextViewController], animated: true)
     }

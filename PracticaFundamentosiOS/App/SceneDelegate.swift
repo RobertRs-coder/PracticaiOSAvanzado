@@ -16,14 +16,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
+
+        let tabBarController = UITabBarController()
+
+        let firstTabNavigationController = UINavigationController.init(rootViewController: LoginViewController())
+        let secondTabNavigationController = UINavigationController.init(rootViewController: SettingsViewController())
         
-        let navigationController = UINavigationController()
-        navigationController.navigationBar.isHidden = true
+        tabBarController.viewControllers = [firstTabNavigationController, secondTabNavigationController]
         
-        let viewController = LoginViewController()
-        navigationController.setViewControllers([viewController], animated: false)
+//        tabBarController.viewControllers?.append(<#T##newElement: UIViewController##UIViewController#>)
         
-        window.rootViewController = navigationController
+        let item1 = UITabBarItem(title: "Home", image: UIImage(named: "ico-home"), tag: 0)
+        let item2 = UITabBarItem(title: "Contest", image:  UIImage(named: "ico-contest"), tag: 1)
+        
+        firstTabNavigationController.tabBarItem = item1
+        secondTabNavigationController.tabBarItem = item2
+        
+        
+     
+
+        UITabBar.appearance().tintColor = UIColor(red: 0/255.0, green: 146/255.0, blue: 248/255.0, alpha: 1.0)
+
+        
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         
         self.window = window

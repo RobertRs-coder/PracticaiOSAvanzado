@@ -26,6 +26,8 @@
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
 		236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
+		23B190B328D02EB800CA88BD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190B128D02EB800CA88BD /* SettingsViewController.swift */; };
+		23B190B428D02EB800CA88BD /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B190B228D02EB800CA88BD /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
 		236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroesTableViewController.xib; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
+		23B190B128D02EB800CA88BD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		23B190B228D02EB800CA88BD /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
 				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 				23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */,
+				23B190B228D02EB800CA88BD /* SettingsViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				236BD51228CE9C7400687773 /* LoginViewController.swift */,
 				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
 				23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */,
+				23B190B128D02EB800CA88BD /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */,
 				230E885028C04296007155BA /* Assets.xcassets in Resources */,
 				236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */,
+				23B190B428D02EB800CA88BD /* SettingsViewController.xib in Resources */,
 				236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +348,7 @@
 			files = (
 				234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */,
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
+				23B190B328D02EB800CA88BD /* SettingsViewController.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,

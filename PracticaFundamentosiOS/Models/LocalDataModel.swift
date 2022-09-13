@@ -22,4 +22,8 @@ class LocalDataModel {
     static func saveToken(token: String) {
         userDefaults.set(token, forKey: Constant.tokenKey)
     }
+    
+    static func deleteToken() {
+        userDefaults.removeObject(forKey: Constant.tokenKey)
+    }
 }
