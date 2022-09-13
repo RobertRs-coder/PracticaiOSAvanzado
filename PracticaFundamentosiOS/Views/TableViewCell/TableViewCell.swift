@@ -10,19 +10,14 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     //MARK: IBOutlets
-    @IBOutlet weak var heroImage: UIImageView!
     @IBOutlet weak var heroName: UILabel!
     @IBOutlet weak var heroDescription: UILabel!
+    @IBOutlet weak var heroImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func set(model: Hero) {
+        
+        self.heroName.text = model.name
+        self.heroDescription.text = model.description
+        self.heroImage.setImage(url: model.photo)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

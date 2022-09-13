@@ -42,7 +42,7 @@ class HeroesTableViewController: UITableViewController {
         }
         
         // Configure the cell
-        cell.heroName.text = heroes[indexPath.row].name
+        cell.set(model: heroes[indexPath.row])
         
         return cell
     }

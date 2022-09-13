@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     //MARK: Variables
     private var hero: Hero?
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
