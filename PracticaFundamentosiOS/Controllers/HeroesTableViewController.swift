@@ -22,8 +22,9 @@ class HeroesTableViewController: UITableViewController {
                                  bundle: nil),
                            forCellReuseIdentifier: "cell")
         
+        guard let token = LocalDataModel.getToken() else { return }
         //Network call
-        let networkModel =  NetworkModel.shared
+        let networkModel =  NetworkModel(token: token)
         
         networkModel.getHeroes { [weak self] heroes, _ in
             

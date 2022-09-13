@@ -28,10 +28,16 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let token = LocalDataModel.getToken() {
+            goToNextViewContoller()
+        }
+    }
 
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
-        let model = NetworkModel.shared
+        let network = NetworkModel()
         let user = userTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
@@ -43,7 +49,7 @@ class LoginViewController: UIViewController {
         
         guard !user.isEmpty, !password.isEmpty else { return }
         
-        model.login(user: user, password: password) { [weak self] token, _ in
+        network.login(user: user, password: password) { [weak self] token, _ in
             print("Your token is: \(token ?? "")")
             
             guard let token = token, !token.isEmpty else {
@@ -55,13 +61,19 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            LocalDataModel.saveToken(token: token)
+            
             DispatchQueue.main.async {
-                self?.loginButton.isEnabled = true
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.isHidden = true
-                let nextViewController = HeroesTableViewController()
-                self?.navigationController?.setViewControllers([nextViewController], animated: true)
+                self?.goToNextViewContoller()
             }
         }
+    }
+    
+    func goToNextViewContoller(){
+        self.loginButton.isEnabled = true
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        let nextViewController = HeroesTableViewController()
+        self.navigationController?.setViewControllers([nextViewController], animated: true)
     }
 }

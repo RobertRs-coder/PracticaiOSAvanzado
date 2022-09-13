@@ -13,13 +13,13 @@ private enum Constant {
 }
 
 class LocalDataModel {
-    private let userDefaults = UserDefaults.standard
+    private static let userDefaults = UserDefaults.standard
     
-    func getToken() -> String? {
+    static func getToken() -> String? {
         userDefaults.string(forKey: Constant.tokenKey)
     }
     
-    func saveToken() {
+    static func saveToken(token: String) {
         userDefaults.set(token, forKey: Constant.tokenKey)
     }
 }
