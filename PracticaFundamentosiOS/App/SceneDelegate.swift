@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        } else {
            // if user isn't logged in
            // instantiate the initial controller and set it as root view controller
-           
            let initialViewController = LoginViewController()
            window.rootViewController = initialViewController
        }
@@ -51,7 +50,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                           options: [.transitionFlipFromLeft],
                           animations: nil,
                           completion: nil)
-
 }
 
     func sceneDidDisconnect(_ scene: UIScene) {

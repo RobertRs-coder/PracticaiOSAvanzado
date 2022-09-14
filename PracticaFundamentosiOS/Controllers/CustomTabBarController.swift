@@ -17,7 +17,7 @@ class CustomTabBarController: UITabBarController {
 //        tabBar.tintColor = .systemTeal
 //        tabBar.unselectedItemTintColor = .systemGray
 //        tabBar.isTranslucent = true
-
+        
         viewControllers = [
             createTabBarController(tabBarTitle: "Heroes", tabBarImage: "pencil", viewController: HeroesTableViewController()),
             createTabBarController(tabBarTitle: "Settings", tabBarImage: "circle.hexagongrid.fill", viewController: SettingsViewController())
@@ -25,14 +25,14 @@ class CustomTabBarController: UITabBarController {
     }
 
     func createTabBarController(tabBarTitle: String, tabBarImage: String, viewController: UIViewController) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.title = tabBarTitle
-        navigationController.tabBarItem.image = UIImage(systemName: tabBarImage)
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.title = tabBarTitle
+        navController.tabBarItem.image = UIImage(systemName: tabBarImage)
 
         // Nav Bar Customisation
 //        navigationController.navigationBar.barTintColor = .systemRed
 //        navigationController.navigationBar.tintColor = .systemBlue
 //        navigationController.navigationBar.isTranslucent = true
-        return navigationController
+        return navController
     }
 }

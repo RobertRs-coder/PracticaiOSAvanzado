@@ -143,7 +143,7 @@ class NetworkModel {
 
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
-        
+        //Other way
 //        var urlComponents = URLComponents()
 //        urlComponents.queryItems = [URLQueryItem(name: "id", value: hero.id)]
 //
@@ -179,57 +179,57 @@ class NetworkModel {
         }
         task.resume()
         
+        
+        
     }
     
-    //?No es posible hacerlo generico
     
-    //    func getFromApi<T: Codable> (id: String, completion: @escaping ([T], NetworkError?) -> Void) {
-    //        guard let url = URL(string: "\(server)/api/heros/tranformations") else {
-    //            completion([], .malformedURL)
-    //            return
-    //        }
-    //        guard let token = self.token else {
-    //            completion([], .otherError)
-    //            return
-    //
-    //        }
-    //        var urlRequest = URLRequest(url: url)
-    //        urlRequest.httpMethod = "POST"
-    //        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    //        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    //
-    //        struct Body: Encodable {
-    //            let id: String
-    //        }
-    //        let body = Body(id: id)
-    //
-    //        urlRequest.httpBody = try? JSONEncoder().encode(body)
-    //
-    //        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-    //            guard error == nil else {
-    //                completion([], .otherError)
-    //                return
-    //            }
-    //
-    //            guard let data = data else {
-    //                completion([], .noData)
-    //                return
-    //            }
-    //
-    //            guard let httpResponse = (response as? HTTPURLResponse),
-    //                  httpResponse.statusCode == 200 else {
-    //                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-    //                return
-    //            }
-    //
-    //            guard let response = try? JSONDecoder().decode([Transformation].self, from: data) else {
-    //                completion([], .decodingError)
-    //                return
-    //            }
-    //
-    //            completion(response, nil)
-    //        }
-    //        task.resume()
-    //
-    //        }
+    //GenericFunction
+//    func getDataApi<T: Decodable>(generalType: T, completion: @escaping (Result<[T], Error>) -> Void) {
+//
+//        guard let url = URL(string: "\(server)/heros/tranformations") else {
+//            completion([], NetworkError.malformedURL)
+//            return
+//        }
+//
+//        guard let token = self.token else {
+//            completion([], NetworkError.otherError)
+//            return
+//        }
+//
+//        let session = URLSession.shared
+//        var request = URLRequest(url: url)
+//        var urlComponents = URLComponents()
+//
+//        urlComponents.queryItems = [URLQueryItem(name: "id", value: T)]
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+//
+//        let task = session.dataTask(with: request) { (data, response, error) in
+//            guard error == nil else {
+//                completion([], NetworkError.otherError)
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion([], NetworkError?.noData)
+//                return
+//            }
+//
+//            guard let httpResponse = (response as? HTTPURLResponse),
+//                  httpResponse.statusCode == 200 else {
+//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
+//                return
+//            }
+//
+//            guard let response = try? JSONDecoder().decode([T].self, from: data) else {
+//                completion([], NetworkError.decodingError)
+//                return
+//            }
+//            completion(response,nil)
+//        }
+//        task.resume()
+//    }
 }
