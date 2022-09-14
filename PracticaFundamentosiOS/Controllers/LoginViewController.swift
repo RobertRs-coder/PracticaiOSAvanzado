@@ -26,14 +26,13 @@ class LoginViewController: UIViewController {
         
         activityIndicator.isHidden = true
         
-        // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if LocalDataModel.getToken() != nil {
-            goToNextViewContoller()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        if LocalDataModel.getToken() != nil {
+//            goToNextViewContoller()
+//       }
+//    }
 
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
@@ -41,11 +40,10 @@ class LoginViewController: UIViewController {
         let user = userTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
+        //Animations of button and activity indicator
         loginButton.isEnabled = false
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        
-        
         
         guard !user.isEmpty, !password.isEmpty else { return }
         
@@ -53,7 +51,8 @@ class LoginViewController: UIViewController {
             print("Your token is: \(token ?? "")")
             
             guard let token = token, !token.isEmpty else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async{
+                    //Animations of button and activity indicator
                     self?.loginButton.isEnabled = true
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
@@ -64,17 +63,25 @@ class LoginViewController: UIViewController {
             LocalDataModel.saveToken(token: token)
             
             DispatchQueue.main.async {
+                let tabBarController = CustomTabBarController()
+                    // This is to get the SceneDelegate object from your view controller
+                    // then call the change root view controller function to change to custom tab bar
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
+                //Animations of button and activity indicator
                 self?.loginButton.isEnabled = true
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
-                self?.goToNextViewContoller()
+                
+                let nextViewController = HeroesTableViewController()
+                self?.navigationController?.setViewControllers([nextViewController], animated: true)
+//                self?.goToNextViewContoller()
             }
         }
     }
     
-    func goToNextViewContoller(){
-        
-        let nextViewController = HeroesTableViewController()
-        self.navigationController?.setViewControllers([nextViewController], animated: true)
-    }
+//    func goToNextViewContoller(){
+//
+//        let nextViewController = HeroesTableViewController()
+//        self.navigationController?.setViewControllers([nextViewController], animated: true)
+//    }
 }

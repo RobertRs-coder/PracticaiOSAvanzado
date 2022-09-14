@@ -25,6 +25,9 @@
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
 		236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */; };
+		237C1F8A28D156710011ED29 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8928D156710011ED29 /* CustomTabBarController.swift */; };
+		237C1F8D28D156A90011ED29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8B28D156A90011ED29 /* SettingsViewController.swift */; };
+		237C1F8E28D156A90011ED29 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F8C28D156A90011ED29 /* SettingsViewController.xib */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,9 @@
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
 		236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroesTableViewController.xib; sourceTree = "<group>"; };
+		237C1F8928D156710011ED29 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		237C1F8B28D156A90011ED29 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		237C1F8C28D156A90011ED29 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +180,7 @@
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
 				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 				23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */,
+				237C1F8C28D156A90011ED29 /* SettingsViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,9 +188,11 @@
 		236BD50F28CE9C2A00687773 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				237C1F8928D156710011ED29 /* CustomTabBarController.swift */,
 				236BD51228CE9C7400687773 /* LoginViewController.swift */,
 				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
 				23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */,
+				237C1F8B28D156A90011ED29 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +323,7 @@
 				234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */,
 				230E885028C04296007155BA /* Assets.xcassets in Resources */,
 				236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */,
+				237C1F8E28D156A90011ED29 /* SettingsViewController.xib in Resources */,
 				236BD51928CEA3AD00687773 /* HeroesTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,11 +354,13 @@
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,
+				237C1F8A28D156710011ED29 /* CustomTabBarController.swift in Sources */,
 				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
 				235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				235A9BAB28CF956B0055BCA5 /* UIImageViewExtension.swift in Sources */,
 				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
+				237C1F8D28D156A90011ED29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

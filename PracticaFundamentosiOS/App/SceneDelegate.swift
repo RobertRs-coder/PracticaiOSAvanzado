@@ -13,22 +13,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+    
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         
-        let navigationController = UINavigationController()
-        navigationController.navigationBar.isHidden = true
+        // if user is logged in before
+        if LocalDataModel.getToken() != nil {
+           // instantiate the custom tab bar controller and set it as root view controller
+            
+            let customTabBarController = CustomTabBarController()
+            window.rootViewController = customTabBarController
         
-        let viewController = LoginViewController()
-        navigationController.setViewControllers([viewController], animated: false)
+       } else {
+           // if user isn't logged in
+           // instantiate the initial controller and set it as root view controller
+           
+           let initialViewController = LoginViewController()
+           window.rootViewController = initialViewController
+       }
         
-        window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        
         self.window = window
         
     }
+    
+    func changeRootViewController(_ viewController: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        
+        // change the root view controller to your specific view controller
+        window.rootViewController = viewController
+        
+        // add animation
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: [.transitionFlipFromLeft],
+                          animations: nil,
+                          completion: nil)
+
+}
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
