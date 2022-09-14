@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case errorCode(Int?)
     case tokenFormatError
     case decodingError
+    case httpResponse
 }
 
 class NetworkModel {
@@ -121,6 +122,9 @@ class NetworkModel {
         
     }
     
+    
+    
+    
     func getTransformations(hero: Hero, completion: @escaping ([Transformation], NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion([], .malformedURL)
@@ -178,58 +182,54 @@ class NetworkModel {
             completion(transformationsResponse, nil)
         }
         task.resume()
-        
-        
-        
     }
     
-    
     //GenericFunction
-//    func getDataApi<T: Decodable>(generalType: T, completion: @escaping (Result<[T], Error>) -> Void) {
-//
-//        guard let url = URL(string: "\(server)/heros/tranformations") else {
-//            completion([], NetworkError.malformedURL)
-//            return
-//        }
-//
-//        guard let token = self.token else {
-//            completion([], NetworkError.otherError)
-//            return
-//        }
-//
-//        let session = URLSession.shared
-//        var request = URLRequest(url: url)
-//        var urlComponents = URLComponents()
-//
-//        urlComponents.queryItems = [URLQueryItem(name: "id", value: T)]
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-//
-//        let task = session.dataTask(with: request) { (data, response, error) in
-//            guard error == nil else {
-//                completion([], NetworkError.otherError)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion([], NetworkError?.noData)
-//                return
-//            }
-//
-//            guard let httpResponse = (response as? HTTPURLResponse),
-//                  httpResponse.statusCode == 200 else {
-//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-//                return
-//            }
-//
-//            guard let response = try? JSONDecoder().decode([T].self, from: data) else {
-//                completion([], NetworkError.decodingError)
-//                return
-//            }
-//            completion(response,nil)
-//        }
-//        task.resume()
-//    }
+    func getDataApi<T: Decodable>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
+
+        guard let url = URL(string: "\(server)/heros/tranformations") else {
+            completion(.failure(NetworkError.malformedURL))
+            return
+        }
+
+        guard let token = self.token else {
+            completion(.failure(NetworkError.otherError))
+            return
+        }
+
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        var urlComponents = URLComponents()
+
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                completion(.failure(NetworkError.malformedURL))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(NetworkError.noData))
+                return
+            }
+
+            guard let httpResponse = (response as? HTTPURLResponse),
+                  httpResponse.statusCode == 200 else {
+                completion(.failure(NetworkError.httpResponse))
+                return
+            }
+
+            guard let response = try? JSONDecoder().decode(T.self, from: data) else {
+                completion(.failure(NetworkError.decodingError))
+                return
+            }
+            completion(.success(response))
+        }
+        task.resume()
+    }
 }

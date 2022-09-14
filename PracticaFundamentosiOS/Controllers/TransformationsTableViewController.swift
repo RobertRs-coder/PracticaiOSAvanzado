@@ -23,14 +23,33 @@ final class TransformationsTableViewController: UITableViewController {
         
         let networkModel = NetworkModel(token: token)
         
-        networkModel.getTransformations(hero: hero, completion: { [weak self] transformations, error in
-            self?.transformations = transformations.sorted {
-                $0.name.localizedStandardCompare($1.name) == .orderedAscending
-            }
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        networkModel.getDataApi(id: hero.id, completion: { result in
+            
+            switch result {
+                
+            case .success(let data):
+                
+                self.transformations = data.sorted {
+                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                break
             }
         })
+        
+        
+//        networkModel.getTransformations(hero: hero, completion: { [weak self] transformations, error in
+//            self?.transformations = transformations.sorted {
+//                $0.name.localizedStandardCompare($1.name) == .orderedAscending
+//            }
+//            DispatchQueue.main.async {
+//                self?.tableView.reloadData()
+//            }
+//        })
     }
     
     func set(model: Hero) {
