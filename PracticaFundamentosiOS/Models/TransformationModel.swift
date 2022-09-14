@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct Transformation: Decodable {
-  let photo: URL
-  let id: String
-  let name: String
-  let description: String
+struct Transformation: TableViewDisplayable, Decodable {
+    let photo: URL
+    let id: String
+    let name: String
+    let description: String
 }

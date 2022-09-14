@@ -29,6 +29,8 @@
 		237C1F8D28D156A90011ED29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8B28D156A90011ED29 /* SettingsViewController.swift */; };
 		237C1F8E28D156A90011ED29 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F8C28D156A90011ED29 /* SettingsViewController.xib */; };
 		237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */; };
+		237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */; };
+		237C1F9428D160B50011ED29 /* TransformationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,8 @@
 		237C1F8B28D156A90011ED29 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		237C1F8C28D156A90011ED29 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationModel.swift; sourceTree = "<group>"; };
+		237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationsTableViewController.swift; sourceTree = "<group>"; };
+		237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationsTableViewController.xib; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,9 +172,9 @@
 		236BD50D28CE9C1A00687773 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				235A9BA828CF92E20055BCA5 /* HeroModel.swift */,
-				235A9BAC28CFA2AF0055BCA5 /* NetworkModel.swift */,
 				23B190AF28D020CE00CA88BD /* LocalDataModel.swift */,
+				235A9BAC28CFA2AF0055BCA5 /* NetworkModel.swift */,
+				235A9BA828CF92E20055BCA5 /* HeroModel.swift */,
 				237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */,
 			);
 			path = Models;
@@ -183,6 +187,7 @@
 				236BD51328CE9C7400687773 /* LoginViewController.xib */,
 				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 				23532BFB28CEB9AE00C23C60 /* DetailViewController.xib */,
+				237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */,
 				237C1F8C28D156A90011ED29 /* SettingsViewController.xib */,
 			);
 			path = Views;
@@ -195,6 +200,7 @@
 				236BD51228CE9C7400687773 /* LoginViewController.swift */,
 				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
 				23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */,
+				237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */,
 				237C1F8B28D156A90011ED29 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
@@ -321,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237C1F9428D160B50011ED29 /* TransformationsTableViewController.xib in Resources */,
 				230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */,
 				23532BFD28CEB9AE00C23C60 /* DetailViewController.xib in Resources */,
 				234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */,
@@ -360,6 +367,7 @@
 				237C1F8A28D156710011ED29 /* CustomTabBarController.swift in Sources */,
 				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
 				235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */,
+				237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */,
 				235A9BAB28CF956B0055BCA5 /* UIImageViewExtension.swift in Sources */,

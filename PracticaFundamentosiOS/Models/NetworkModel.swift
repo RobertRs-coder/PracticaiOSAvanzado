@@ -110,18 +110,18 @@ class NetworkModel {
                 return
             }
             
-            guard let response = try? JSONDecoder().decode([Hero].self, from: data) else {
+            guard let heroesResponse = try? JSONDecoder().decode([Hero].self, from: data) else {
                 completion([], .decodingError)
                 return
             }
             
-            completion(response, nil)
+            completion(heroesResponse, nil)
         }
         task.resume()
-            
-        }
+        
+    }
     
-    func getHeroTranformations(id: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
+    func getTransformations(heroId: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/api/heros/tranformations") else {
             completion([], .malformedURL)
             return
@@ -139,7 +139,7 @@ class NetworkModel {
         struct Body: Encodable {
             let id: String
         }
-        let body = Body(id: id)
+        let body = Body(id: heroId)
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
@@ -160,64 +160,66 @@ class NetworkModel {
                 return
             }
             
-            guard let response = try? JSONDecoder().decode([Transformation].self, from: data) else {
+            guard let transformationsResponse = try? JSONDecoder().decode([Transformation].self, from: data) else {
                 completion([], .decodingError)
                 return
             }
             
-            completion(response, nil)
+            completion(transformationsResponse, nil)
         }
         task.resume()
-            
-        }
+        
+    }
     
-//    func getFromApi<T: Codable> (id: String, completion: @escaping ([T], NetworkError?) -> Void) {
-//        guard let url = URL(string: "\(server)/api/heros/tranformations") else {
-//            completion([], .malformedURL)
-//            return
-//        }
-//        guard let token = self.token else {
-//            completion([], .otherError)
-//            return
-//
-//        }
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        struct Body: Encodable {
-//            let id: String
-//        }
-//        let body = Body(id: id)
-//
-//        urlRequest.httpBody = try? JSONEncoder().encode(body)
-//
-//        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-//            guard error == nil else {
-//                completion([], .otherError)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion([], .noData)
-//                return
-//            }
-//
-//            guard let httpResponse = (response as? HTTPURLResponse),
-//                  httpResponse.statusCode == 200 else {
-//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-//                return
-//            }
-//
-//            guard let response = try? JSONDecoder().decode([Transformation].self, from: data) else {
-//                completion([], .decodingError)
-//                return
-//            }
-//
-//            completion(response, nil)
-//        }
-//        task.resume()
-//
-//        }
+    //?No es posible hacerlo generico
+    
+    //    func getFromApi<T: Codable> (id: String, completion: @escaping ([T], NetworkError?) -> Void) {
+    //        guard let url = URL(string: "\(server)/api/heros/tranformations") else {
+    //            completion([], .malformedURL)
+    //            return
+    //        }
+    //        guard let token = self.token else {
+    //            completion([], .otherError)
+    //            return
+    //
+    //        }
+    //        var urlRequest = URLRequest(url: url)
+    //        urlRequest.httpMethod = "POST"
+    //        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    //        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    //
+    //        struct Body: Encodable {
+    //            let id: String
+    //        }
+    //        let body = Body(id: id)
+    //
+    //        urlRequest.httpBody = try? JSONEncoder().encode(body)
+    //
+    //        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+    //            guard error == nil else {
+    //                completion([], .otherError)
+    //                return
+    //            }
+    //
+    //            guard let data = data else {
+    //                completion([], .noData)
+    //                return
+    //            }
+    //
+    //            guard let httpResponse = (response as? HTTPURLResponse),
+    //                  httpResponse.statusCode == 200 else {
+    //                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
+    //                return
+    //            }
+    //
+    //            guard let response = try? JSONDecoder().decode([Transformation].self, from: data) else {
+    //                completion([], .decodingError)
+    //                return
+    //            }
+    //
+    //            completion(response, nil)
+    //        }
+    //        task.resume()
+    //
+    //        }
 }

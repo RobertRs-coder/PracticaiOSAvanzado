@@ -8,11 +8,12 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var transformationsButton: UIButton!
     
     //MARK: Variables
     private var hero: Hero?
@@ -20,7 +21,7 @@ class DetailViewController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let hero = hero else {
             return
         }
@@ -30,7 +31,19 @@ class DetailViewController: UIViewController {
         self.imageView.setImage(url: hero.photo)
     }
     
+    
     func set(model: Hero) {
-        hero = model
+        self.hero = model
+    }
+    
+    @IBAction func onTransformationTap(_ sender: UIButton) {
+        guard let hero = hero else {
+            return
+        }
+        
+        //Now that we have the transformations at this point, we could pass the transformations array here
+        let nextVC = TransformationsTableViewController()
+        nextVC.set(model: hero)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }

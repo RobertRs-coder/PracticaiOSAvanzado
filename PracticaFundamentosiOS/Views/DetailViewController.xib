@@ -14,6 +14,7 @@
                 <outlet property="descriptionTextView" destination="fTZ-h0-9x9" id="BiR-mk-BGU"/>
                 <outlet property="imageView" destination="LVo-uh-Qip" id="NEQ-po-tul"/>
                 <outlet property="nameLabel" destination="Oqb-bL-l7B" id="kiE-zX-gNu"/>
+                <outlet property="transformationsButton" destination="VCB-uR-DXS" id="TjU-qW-hjn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,9 +30,9 @@
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTZ-h0-9x9">
-                    <rect key="frame" x="10" y="299" width="394" height="563"/>
+                    <rect key="frame" x="10" y="299" width="394" height="398"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -42,22 +43,35 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCB-uR-DXS">
+                    <rect key="frame" x="133" y="727" width="148" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="148" id="3gH-ph-oaY"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Transformations"/>
+                    <connections>
+                        <action selector="onTransformationTap:" destination="-1" eventType="touchUpInside" id="q1X-1E-jVt"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fTZ-h0-9x9" secondAttribute="bottom" id="40s-uZ-hDW"/>
                 <constraint firstItem="LVo-uh-Qip" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IwO-ug-7F2"/>
+                <constraint firstItem="VCB-uR-DXS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OGJ-4h-Tzk"/>
                 <constraint firstItem="fTZ-h0-9x9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="QyI-Hw-pG2"/>
                 <constraint firstItem="Oqb-bL-l7B" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ZDk-Gm-fy7"/>
                 <constraint firstItem="LVo-uh-Qip" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bqy-VY-3LS"/>
+                <constraint firstItem="VCB-uR-DXS" firstAttribute="top" secondItem="fTZ-h0-9x9" secondAttribute="bottom" priority="999" constant="30" id="dHq-bv-5VX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Oqb-bL-l7B" secondAttribute="trailing" constant="10" id="elT-4A-0W0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fTZ-h0-9x9" secondAttribute="trailing" constant="10" id="kBg-DS-APE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VCB-uR-DXS" secondAttribute="bottom" constant="100" id="p7e-G4-pM9"/>
                 <constraint firstItem="Oqb-bL-l7B" firstAttribute="top" secondItem="LVo-uh-Qip" secondAttribute="bottom" constant="20" id="sB3-Zz-Unw"/>
                 <constraint firstItem="fTZ-h0-9x9" firstAttribute="top" secondItem="Oqb-bL-l7B" secondAttribute="bottom" constant="10" id="sBN-rN-qZk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LVo-uh-Qip" secondAttribute="trailing" id="ub6-jX-yF0"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="131"/>
+            <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
         </view>
     </objects>
     <resources>
