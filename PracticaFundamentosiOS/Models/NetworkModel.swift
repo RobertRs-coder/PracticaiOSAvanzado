@@ -121,8 +121,8 @@ class NetworkModel {
         
     }
     
-    func getTransformations(heroId: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
-        guard let url = URL(string: "\(server)/api/heros/tranformations") else {
+    func getTransformations(hero: Hero, completion: @escaping ([Transformation], NetworkError?) -> Void) {
+        guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion([], .malformedURL)
             return
         }
@@ -135,13 +135,23 @@ class NetworkModel {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         struct Body: Encodable {
             let id: String
         }
-        let body = Body(id: heroId)
-        
+        let body = Body(id: hero.id)
+
         urlRequest.httpBody = try? JSONEncoder().encode(body)
+        
+        
+//        var urlComponents = URLComponents()
+//        urlComponents.queryItems = [URLQueryItem(name: "id", value: hero.id)]
+//
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+    
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {

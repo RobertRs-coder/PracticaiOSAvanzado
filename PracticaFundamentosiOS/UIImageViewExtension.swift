@@ -5,10 +5,10 @@
 //  Created by Roberto Rojo Sahuquillo on 12/9/22.
 //
 
-import Foundation
 import UIKit
 
 typealias ImageCompletion = (UIImage?) -> Void
+
 extension UIImageView {
     
     func setImage(url: URL) {

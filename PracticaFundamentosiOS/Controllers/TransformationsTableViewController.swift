@@ -23,7 +23,7 @@ final class TransformationsTableViewController: UITableViewController {
         
         let networkModel = NetworkModel(token: token)
         
-        networkModel.getTransformations(heroId: hero.id, completion: { [weak self] transformations, error in
+        networkModel.getTransformations(hero: hero, completion: { [weak self] transformations, error in
             self?.transformations = transformations.sorted {
                 $0.name.localizedStandardCompare($1.name) == .orderedAscending
             }
