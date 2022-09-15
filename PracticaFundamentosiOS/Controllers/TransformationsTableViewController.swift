@@ -9,39 +9,46 @@ import UIKit
 
 final class TransformationsTableViewController: UITableViewController {
     
-    private var transformations: [Transformation] = []
     
-    private var hero: Hero?
+    
+    private var transformations: [Transformation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.register(
             UINib(nibName: "TableViewCell", bundle: nil),
             forCellReuseIdentifier: "cell"
-        )
-        guard let hero = hero, let token = LocalDataModel.getToken() else { return }
-        
-        let networkModel = NetworkModel(token: token)
-        
-        networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { result in
             
-            switch result {
+            
                 
-            case .success(let data):
-                
-                self.transformations = data.sorted {
-                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            case .failure(let error):
-                print("There is an error: \(error)")
-                break
-                
-            }
-        })
+//            guard let transformations = transformations else { return }
+            
+            
+        )
+        
+//        guard let hero = hero, let token = LocalDataModel.getToken() else { return }
+//
+//        let networkModel = NetworkModel(token: token)
+//
+//        networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { result in
+//
+//            switch result {
+//
+//            case .success(let data):
+//
+//                self.transformations = data.sorted {
+//                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
+//                }
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//
+//            case .failure(let error):
+//                print("There is an error: \(error)")
+//                break
+//
+//            }
+//        })
         
         
 //        networkModel.getTransformations(hero: hero, completion: { [weak self] transformations, error in
@@ -54,8 +61,8 @@ final class TransformationsTableViewController: UITableViewController {
 //        })
     }
     
-    func set(model: Hero) {
-        self.hero = model
+    func set(model: [Transformation]) {
+        self.transformations = model
     }
     
     // MARK: - Table view data source
