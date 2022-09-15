@@ -24,19 +24,26 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let hero = hero else {
-            return
-        }
+        guard let hero = hero else { return }
         
         self.nameLabel.text = hero.name
         self.descriptionTextView.text = hero.description
         self.imageView.setImage(url: hero.photo)
         
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
         guard let token = LocalDataModel.getToken() else { return }
 
         let networkModel = NetworkModel(token: token)
-
+        
+        
+        guard let hero = hero else { return }
+        guard let transformations = self.transformations else { return}
 
         networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { result in
             
@@ -44,8 +51,14 @@ class DetailViewController: UIViewController {
                 
             case .success(let data):
                 
-                self.transformations = data.sorted {
-                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                if transformations.isEmpty{
+                    DispatchQueue.main.sync {
+                        self.transformationsButton.isHidden = true
+                    }
+                } else {
+                    self.transformations = data.sorted {
+                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                    }
                 }
 //                DispatchQueue.main.async {
 //                    self.tableView.reloadData()
@@ -58,11 +71,7 @@ class DetailViewController: UIViewController {
             }
         })
     }
-    
-        
-    
-    
-    
+
     func set(model: Hero) {
         self.hero = model
     }
@@ -72,13 +81,6 @@ class DetailViewController: UIViewController {
         guard let transformations = transformations else {
             return
         }
-        
-//        if transformations == []: {
-//
-//
-//        }
-                
-        
         //Now that we have the transformations at this point, we could pass the transformations array here
         let nextVC = TransformationsTableViewController()
         nextVC.set(model: transformations)
