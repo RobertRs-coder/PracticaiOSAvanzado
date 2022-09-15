@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         guard !user.isEmpty, !password.isEmpty else { return }
         
         network.login(user: user, password: password) { [weak self] token, _ in
-            print("Your token is: \(token ?? "")")
+//            print("Your token is: \(token ?? "")")
             
             guard let token = token, !token.isEmpty else {
                 DispatchQueue.main.async{

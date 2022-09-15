@@ -185,7 +185,7 @@ class NetworkModel {
     }
     
     //GenericFunction
-    func getDataApi<T: Decodable>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
+    func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
 
         guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion(.failure(NetworkError.malformedURL))
@@ -198,16 +198,16 @@ class NetworkModel {
         }
 
         let session = URLSession.shared
-        var request = URLRequest(url: url)
+        
         var urlComponents = URLComponents()
-
         urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+        
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
 
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion(.failure(NetworkError.malformedURL))
                 return

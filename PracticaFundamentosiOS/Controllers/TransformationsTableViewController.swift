@@ -23,7 +23,7 @@ final class TransformationsTableViewController: UITableViewController {
         
         let networkModel = NetworkModel(token: token)
         
-        networkModel.getDataApi(id: hero.id, completion: { result in
+        networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { result in
             
             switch result {
                 
@@ -37,7 +37,9 @@ final class TransformationsTableViewController: UITableViewController {
                 }
                 
             case .failure(let error):
+                print("There is an error: \(error)")
                 break
+                
             }
         })
         
