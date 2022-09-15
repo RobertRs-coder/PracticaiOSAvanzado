@@ -30,7 +30,7 @@
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTZ-h0-9x9">
-                    <rect key="frame" x="10" y="299" width="394" height="398"/>
+                    <rect key="frame" x="10" y="299" width="394" height="398.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" systemColor="labelColor"/>
@@ -38,18 +38,20 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqb-bL-l7B">
-                    <rect key="frame" x="10" y="268" width="44.5" height="21"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <rect key="frame" x="10" y="268" width="43.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCB-uR-DXS">
-                    <rect key="frame" x="133" y="727" width="148" height="35"/>
+                    <rect key="frame" x="133" y="727.5" width="148" height="34.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="148" id="3gH-ph-oaY"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Transformations"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Transformations">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="onTransformationTap:" destination="-1" eventType="touchUpInside" id="q1X-1E-jVt"/>
                     </connections>

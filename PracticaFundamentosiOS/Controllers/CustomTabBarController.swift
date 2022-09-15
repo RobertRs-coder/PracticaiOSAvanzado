@@ -19,8 +19,8 @@ class CustomTabBarController: UITabBarController {
 //        tabBar.isTranslucent = true
         
         viewControllers = [
-            createTabBarController(tabBarTitle: "Heroes", tabBarImage: "pencil", viewController: HeroesTableViewController()),
-            createTabBarController(tabBarTitle: "Settings", tabBarImage: "circle.hexagongrid.fill", viewController: SettingsViewController())
+            createTabBarController(tabBarTitle: "Heroes", tabBarImage: "person.circle", viewController: HeroesTableViewController()),
+            createTabBarController(tabBarTitle: "Settings", tabBarImage: "gear", viewController: SettingsViewController())
         ]
     }
 
