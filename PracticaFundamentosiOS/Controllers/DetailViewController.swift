@@ -29,45 +29,29 @@ class DetailViewController: UIViewController {
         self.nameLabel.text = hero.name
         self.descriptionTextView.text = hero.description
         self.imageView.setImage(url: hero.photo)
-        
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
+    
         guard let token = LocalDataModel.getToken() else { return }
-
         let networkModel = NetworkModel(token: token)
-        
-        
-        guard let hero = hero else { return }
-        guard let transformations = self.transformations else { return}
 
-        networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { result in
+        networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { [weak self] result in
             
             switch result {
                 
             case .success(let data):
-                
-                if transformations.isEmpty{
-                    DispatchQueue.main.sync {
-                        self.transformationsButton.isHidden = true
-                    }
-                } else {
-                    self.transformations = data.sorted {
-                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
-                    }
+                //Main thread to get data ASAP
+                DispatchQueue.main.sync {
+                self?.transformations = data
+                let transformationsCount = self?.transformations?.count
+                self?.transformationsButton.isEnabled = transformationsCount != 0
                 }
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
+                
+                self?.transformations = self?.transformations?.sorted {
+                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                }
                 
             case .failure(let error):
                 print("There is an error: \(error)")
                 break
-                
             }
         })
     }
@@ -75,7 +59,6 @@ class DetailViewController: UIViewController {
     func set(model: Hero) {
         self.hero = model
     }
-    
     
     @IBAction func onTransformationTap(_ sender: UIButton) {
         guard let transformations = transformations else {
