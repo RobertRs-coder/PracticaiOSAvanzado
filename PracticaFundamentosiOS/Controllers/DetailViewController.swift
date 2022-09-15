@@ -29,6 +29,8 @@ class DetailViewController: UIViewController {
         self.nameLabel.text = hero.name
         self.descriptionTextView.text = hero.description
         self.imageView.setImage(url: hero.photo)
+        
+        self.transformationsButton.isHidden = true
     
         guard let token = LocalDataModel.getToken() else { return }
         let networkModel = NetworkModel(token: token)
@@ -38,11 +40,16 @@ class DetailViewController: UIViewController {
             switch result {
                 
             case .success(let data):
-                //Main thread to get data ASAP
+                //Main thread to get data ASAP at first time
+//                self?.transformations = data
+//                let transformationsCount = self?.transformations?.count
+//                DispatchQueue.main.sync {
+//                    self?.transformationsButton.isEnabled = transformationsCount != 0
+//                }
                 DispatchQueue.main.sync {
-                self?.transformations = data
-                let transformationsCount = self?.transformations?.count
-                self?.transformationsButton.isEnabled = transformationsCount != 0
+                    self?.transformations = data
+                    let transformationsCount = self?.transformations?.count
+                    self?.transformationsButton.isHidden = transformationsCount == 0
                 }
                 
                 self?.transformations = self?.transformations?.sorted {
