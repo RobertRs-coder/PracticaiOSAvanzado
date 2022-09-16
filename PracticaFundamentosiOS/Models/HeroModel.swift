@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Hero: TableViewDisplayable, Decodable {
+struct Hero: TableViewDisplayable, DetailViewDisplayable,  Decodable {
     let id: String
     let name: String
     let description: String

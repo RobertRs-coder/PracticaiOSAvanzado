@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Transformation: TableViewDisplayable, Decodable {
+struct Transformation: TableViewDisplayable, DetailViewDisplayable, Decodable {
     let photo: URL
     let id: String
     let name: String

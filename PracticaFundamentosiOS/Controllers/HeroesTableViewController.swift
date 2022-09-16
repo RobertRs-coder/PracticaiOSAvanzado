@@ -36,23 +36,13 @@ class HeroesTableViewController: UITableViewController {
         }
     }
     
-    //Insert Cell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
-            return UITableViewCell()
-        }
-        
-        // Configure the cell
-        cell.set(model: heroes[indexPath.row])
-        
-        return cell
-    }
+    
 
     //Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = DetailViewController ()
   
-        nextViewController.set(model: heroes[indexPath.row])
+        nextViewController.setHero(model: heroes[indexPath.row])
         
         navigationController?.pushViewController(nextViewController, animated: true)
     }
@@ -67,6 +57,18 @@ class HeroesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return heroes.count
+    }
+    
+    //Insert Cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+            return UITableViewCell()
+        }
+        
+        // Configure the cell
+        cell.set(model: heroes[indexPath.row])
+        
+        return cell
     }
     
 }

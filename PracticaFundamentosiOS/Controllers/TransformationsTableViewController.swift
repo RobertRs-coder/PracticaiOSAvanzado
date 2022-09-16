@@ -9,8 +9,7 @@ import UIKit
 
 final class TransformationsTableViewController: UITableViewController {
     
-    
-    
+
     private var transformations: [Transformation] = []
     
     override func viewDidLoad() {
@@ -63,6 +62,16 @@ final class TransformationsTableViewController: UITableViewController {
     
     func set(model: [Transformation]) {
         self.transformations = model
+    }
+    
+    
+    //Navigation
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextViewController = DetailViewController ()
+  
+        nextViewController.setTransformation(model: transformations[indexPath.row])
+        
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     
