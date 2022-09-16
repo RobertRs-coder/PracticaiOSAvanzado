@@ -12,8 +12,6 @@
 		230E885028C04296007155BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230E884F28C04296007155BA /* Assets.xcassets */; };
 		230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230E885128C04296007155BA /* LaunchScreen.storyboard */; };
 		230E885E28C04296007155BA /* PracticaFundamentosiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */; };
-		230E886828C04296007155BA /* PracticaFundamentosiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886728C04296007155BA /* PracticaFundamentosiOSUITests.swift */; };
-		230E886A28C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */; };
 		234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234AB70128CEA76B00562E81 /* TableViewCell.swift */; };
 		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
 		23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */; };
@@ -31,18 +29,12 @@
 		237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */; };
 		237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */; };
 		237C1F9428D160B50011ED29 /* TransformationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */; };
+		23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		230E885A28C04296007155BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 230E883B28C04295007155BA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 230E884228C04295007155BA;
-			remoteInfo = PracticaFundamentosiOS;
-		};
-		230E886428C04296007155BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 230E883B28C04295007155BA /* Project object */;
 			proxyType = 1;
@@ -60,9 +52,6 @@
 		230E885428C04296007155BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		230E885928C04296007155BA /* PracticaFundamentosiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFundamentosiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSTests.swift; sourceTree = "<group>"; };
-		230E886328C04296007155BA /* PracticaFundamentosiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFundamentosiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		230E886728C04296007155BA /* PracticaFundamentosiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITests.swift; sourceTree = "<group>"; };
-		230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		234AB70128CEA76B00562E81 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +69,7 @@
 		237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationModel.swift; sourceTree = "<group>"; };
 		237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationsTableViewController.swift; sourceTree = "<group>"; };
 		237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationsTableViewController.xib; sourceTree = "<group>"; };
+		23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModelTets.swift; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,13 +88,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		230E886028C04296007155BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -113,7 +96,6 @@
 			children = (
 				230E884528C04295007155BA /* PracticaFundamentosiOS */,
 				230E885C28C04296007155BA /* PracticaFundamentosiOSTests */,
-				230E886628C04296007155BA /* PracticaFundamentosiOSUITests */,
 				230E884428C04295007155BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,7 +105,6 @@
 			children = (
 				230E884328C04295007155BA /* PracticaFundamentosiOS.app */,
 				230E885928C04296007155BA /* PracticaFundamentosiOSTests.xctest */,
-				230E886328C04296007155BA /* PracticaFundamentosiOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,17 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */,
+				23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */,
 			);
 			path = PracticaFundamentosiOSTests;
-			sourceTree = "<group>";
-		};
-		230E886628C04296007155BA /* PracticaFundamentosiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				230E886728C04296007155BA /* PracticaFundamentosiOSUITests.swift */,
-				230E886928C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift */,
-			);
-			path = PracticaFundamentosiOSUITests;
 			sourceTree = "<group>";
 		};
 		234AB70528CEA77300562E81 /* TableViewCell */ = {
@@ -261,24 +234,6 @@
 			productReference = 230E885928C04296007155BA /* PracticaFundamentosiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		230E886228C04296007155BA /* PracticaFundamentosiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 230E887328C04296007155BA /* Build configuration list for PBXNativeTarget "PracticaFundamentosiOSUITests" */;
-			buildPhases = (
-				230E885F28C04296007155BA /* Sources */,
-				230E886028C04296007155BA /* Frameworks */,
-				230E886128C04296007155BA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				230E886528C04296007155BA /* PBXTargetDependency */,
-			);
-			name = PracticaFundamentosiOSUITests;
-			productName = PracticaFundamentosiOSUITests;
-			productReference = 230E886328C04296007155BA /* PracticaFundamentosiOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -293,10 +248,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					230E885828C04296007155BA = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 230E884228C04295007155BA;
-					};
-					230E886228C04296007155BA = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 230E884228C04295007155BA;
 					};
@@ -317,7 +268,6 @@
 			targets = (
 				230E884228C04295007155BA /* PracticaFundamentosiOS */,
 				230E885828C04296007155BA /* PracticaFundamentosiOSTests */,
-				230E886228C04296007155BA /* PracticaFundamentosiOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,13 +289,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		230E885728C04296007155BA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		230E886128C04296007155BA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,15 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230E885E28C04296007155BA /* PracticaFundamentosiOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		230E885F28C04296007155BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				230E886A28C04296007155BA /* PracticaFundamentosiOSUITestsLaunchTests.swift in Sources */,
-				230E886828C04296007155BA /* PracticaFundamentosiOSUITests.swift in Sources */,
+				23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,11 +335,6 @@
 			isa = PBXTargetDependency;
 			target = 230E884228C04295007155BA /* PracticaFundamentosiOS */;
 			targetProxy = 230E885A28C04296007155BA /* PBXContainerItemProxy */;
-		};
-		230E886528C04296007155BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 230E884228C04295007155BA /* PracticaFundamentosiOS */;
-			targetProxy = 230E886428C04296007155BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -626,40 +556,6 @@
 			};
 			name = Release;
 		};
-		230E887428C04296007155BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robert.rs.PracticaFundamentosiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PracticaFundamentosiOS;
-			};
-			name = Debug;
-		};
-		230E887528C04296007155BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robert.rs.PracticaFundamentosiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PracticaFundamentosiOS;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -686,15 +582,6 @@
 			buildConfigurations = (
 				230E887128C04296007155BA /* Debug */,
 				230E887228C04296007155BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		230E887328C04296007155BA /* Build configuration list for PBXNativeTarget "PracticaFundamentosiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				230E887428C04296007155BA /* Debug */,
-				230E887528C04296007155BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

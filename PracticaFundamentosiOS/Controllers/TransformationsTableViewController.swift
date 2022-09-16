@@ -14,6 +14,8 @@ final class TransformationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Transformations"
+
         tableView?.register(
             UINib(nibName: "TableViewCell", bundle: nil),
             forCellReuseIdentifier: "cell"
