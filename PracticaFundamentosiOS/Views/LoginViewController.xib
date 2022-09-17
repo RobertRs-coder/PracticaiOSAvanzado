@@ -31,7 +31,6 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDG-12-j1r">
                     <rect key="frame" x="80" y="407.5" width="65.5" height="18.5"/>
                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                    <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-TW-aWD">
@@ -61,7 +60,6 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75w-dT-a1i">
                     <rect key="frame" x="80" y="326" width="33" height="22.5"/>
                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                    <color key="textColor" systemColor="systemBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -99,9 +97,6 @@
     </objects>
     <resources>
         <image name="fondo2" width="1080" height="1920"/>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

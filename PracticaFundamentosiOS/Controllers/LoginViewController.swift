@@ -40,15 +40,23 @@ class LoginViewController: UIViewController {
         let user = userTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        //Animations of button and activity indicator
+        //Animations of button
         loginButton.isEnabled = false
+        
+        
+        guard !user.isEmpty, !password.isEmpty else {
+            let alert = UIAlertController(title: "Missing fields", message: "Please complete the fields", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(alertAction)
+            self.present(alert, animated: true)
+            loginButton.isEnabled = true
+            return
+        }
+        //Animations of activity indicator
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        guard !user.isEmpty, !password.isEmpty else { return }
-        
-        network.login(user: user, password: password) { [weak self] token, _ in
-//            print("Your token is: \(token ?? "")")
+        network.login(user: user, password: password) { [weak self] token, error in
             
             guard let token = token, !token.isEmpty else {
                 DispatchQueue.main.async{
@@ -56,7 +64,12 @@ class LoginViewController: UIViewController {
                     self?.loginButton.isEnabled = true
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
+                    return
                 }
+                let alert = UIAlertController(title: "Error", message: "Problem server connection", preferredStyle: .alert)
+                let alertACtion = UIAlertAction(title: "Ok", style: .default)
+                alert.addAction(alertACtion)
+                self?.present(alert, animated: true)
                 return
             }
             
@@ -74,14 +87,8 @@ class LoginViewController: UIViewController {
                 
                 let nextViewController = HeroesTableViewController()
                 self?.navigationController?.setViewControllers([nextViewController], animated: true)
-//                self?.goToNextViewContoller()
+
             }
         }
     }
-    
-//    func goToNextViewContoller(){
-//
-//        let nextViewController = HeroesTableViewController()
-//        self.navigationController?.setViewControllers([nextViewController], animated: true)
-//    }
 }

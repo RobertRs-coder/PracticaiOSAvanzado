@@ -124,9 +124,6 @@ class NetworkModel {
         
     }
     
-    
-    
-    
     func getTransformations(hero: Hero, completion: @escaping ([Transformation], NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion([], .malformedURL)
