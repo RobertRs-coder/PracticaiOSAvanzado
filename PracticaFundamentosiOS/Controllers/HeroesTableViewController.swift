@@ -57,6 +57,7 @@ class HeroesTableViewController: UITableViewController {
         navigationController?.pushViewController(nextViewController, animated: true)
     }
     
+    //Cell animations
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
       cell.center.x += 50
       UIView.animate(withDuration: 0.5) {

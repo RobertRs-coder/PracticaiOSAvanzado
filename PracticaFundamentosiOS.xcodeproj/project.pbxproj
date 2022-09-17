@@ -11,6 +11,7 @@
 		230E884928C04295007155BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E884828C04295007155BA /* SceneDelegate.swift */; };
 		230E885028C04296007155BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230E884F28C04296007155BA /* Assets.xcassets */; };
 		230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230E885128C04296007155BA /* LaunchScreen.storyboard */; };
+		2311CEE428D635C300C3AFEC /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311CEE328D635C300C3AFEC /* URLSessionMock.swift */; };
 		234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234AB70128CEA76B00562E81 /* TableViewCell.swift */; };
 		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
 		23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */; };
@@ -56,6 +57,7 @@
 		230E885228C04296007155BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		230E885428C04296007155BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		230E885928C04296007155BA /* PracticaFundamentosiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFundamentosiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2311CEE328D635C300C3AFEC /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		234AB70128CEA76B00562E81 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				23B609E328D57D3B00E526E6 /* noTransformations.json */,
 				23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */,
 				2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */,
+				2311CEE328D635C300C3AFEC /* URLSessionMock.swift */,
 			);
 			path = PracticaFundamentosiOSTests;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2311CEE428D635C300C3AFEC /* URLSessionMock.swift in Sources */,
 				2364F6E428D4CF160077D7A1 /* NetworkModelTests.swift in Sources */,
 				23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */,
 			);
