@@ -23,9 +23,34 @@ final class NetworkModelTests: XCTestCase {
         sut = nil
     }
 
-    func testLogin() throws {
+    func testLoginSuccess() throws {
+        let expectation = expectation(description: "Login Success")
+        var retrievedToken: String?
+        var error: NetworkError?
         
+        sut.login(user: "rrojo.va@gmail.com", password: "123456") { token, networkError in
+            retrievedToken = token
+            error = networkError
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertNotNil(retrievedToken, "Should have received a token")
+        XCTAssertNil(error, "Should no be an error")
+    }
+    
+    func testLoginFail() throws {
+        let expectation = expectation(description: "Login Fail")
+        var retrievedToken: String?
+        var error: NetworkError?
         
+        sut.login(user: "", password: "") { token, networkError in
+            retrievedToken = token
+            error = networkError
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+        XCTAssertNil(retrievedToken, "Should have not received a token")
+        XCTAssertNotNil(error, "Should be an error")
         
     }
     

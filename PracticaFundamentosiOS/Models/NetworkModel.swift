@@ -154,7 +154,6 @@ class NetworkModel {
 //        urlRequest.httpMethod = "POST"
 //        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 //        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-    
         
         let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
