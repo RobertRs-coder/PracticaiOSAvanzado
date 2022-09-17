@@ -23,16 +23,42 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Heroes"
-        
         activityIndicator.isHidden = true
         
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        if LocalDataModel.getToken() != nil {
-//            goToNextViewContoller()
-//       }
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loginButton.alpha = 0
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if LocalDataModel.getToken() == nil {
+            userTextField.center.x -= view.bounds.width
+            passwordTextField.center.x -=  view.bounds.width
+            UIView.animate(withDuration: 0.75,
+                           delay: 0,
+                           usingSpringWithDamping: 0.75,
+                           initialSpringVelocity: 0,
+                           options: [],
+                           animations: {
+                self.userTextField.center.x += self.view.bounds.width
+            }, completion: nil)
+            UIView.animate(withDuration: 0.75,
+                           delay: 0.4,
+                           usingSpringWithDamping: 0.75,
+                           initialSpringVelocity: 0,
+                           options: [],
+                           animations: {
+                self.passwordTextField.center.x += self.view.bounds.width
+            }, completion: nil)
+            UIView.animate(withDuration: 1) {
+                self.loginButton.alpha = 1
+            }
+        }
+    }
 
     //MARK: IBActions
     @IBAction func loginOnTap(_ sender: UIButton) {
