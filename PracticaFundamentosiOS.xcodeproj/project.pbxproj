@@ -31,6 +31,7 @@
 		237C1F9428D160B50011ED29 /* TransformationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */; };
 		23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
+		23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationsTableViewController.xib; sourceTree = "<group>"; };
 		23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModelTets.swift; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
+		23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +118,10 @@
 				236BD50D28CE9C1A00687773 /* Models */,
 				236BD50E28CE9C2200687773 /* Views */,
 				236BD50F28CE9C2A00687773 /* Controllers */,
+				23B609DA28D55A0B00E526E6 /* Extensions */,
 				236BD51028CE9C3B00687773 /* Resources */,
 				230E885128C04296007155BA /* LaunchScreen.storyboard */,
 				230E885428C04296007155BA /* Info.plist */,
-				235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */,
 			);
 			path = PracticaFundamentosiOS;
 			sourceTree = "<group>";
@@ -194,6 +196,15 @@
 				230E884828C04295007155BA /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		23B609DA28D55A0B00E526E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */,
+				235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 			files = (
 				234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */,
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
+				23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,

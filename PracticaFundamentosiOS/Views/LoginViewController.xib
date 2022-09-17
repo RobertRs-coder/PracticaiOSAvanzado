@@ -87,7 +87,7 @@
                 <constraint firstItem="6mt-xU-fQH" firstAttribute="top" secondItem="sDG-12-j1r" secondAttribute="bottom" constant="5" id="xlW-s7-tNV"/>
                 <constraint firstItem="Brm-V5-gMB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yED-sH-oGc"/>
             </constraints>
-            <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
+            <point key="canvasLocation" x="130" y="128"/>
         </view>
         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="zgf-Kc-GSW">
             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>

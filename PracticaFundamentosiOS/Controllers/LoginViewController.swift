@@ -45,10 +45,8 @@ class LoginViewController: UIViewController {
         
         
         guard !user.isEmpty, !password.isEmpty else {
-            let alert = UIAlertController(title: "Missing fields", message: "Please complete the fields", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Ok", style: .default)
-            alert.addAction(alertAction)
-            self.present(alert, animated: true)
+            self.showAlert(title: "Missing fields", message: "Please complete the fields")
+            //Enabled button to other try
             loginButton.isEnabled = true
             return
         }
@@ -66,10 +64,8 @@ class LoginViewController: UIViewController {
                     self?.activityIndicator.isHidden = true
                     return
                 }
-                let alert = UIAlertController(title: "Error", message: "Problem server connection", preferredStyle: .alert)
-                let alertACtion = UIAlertAction(title: "Ok", style: .default)
-                alert.addAction(alertACtion)
-                self?.present(alert, animated: true)
+                
+                self?.showAlert(title: "Error", message: "Problem server connection")
                 return
             }
             
@@ -92,3 +88,5 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
+
