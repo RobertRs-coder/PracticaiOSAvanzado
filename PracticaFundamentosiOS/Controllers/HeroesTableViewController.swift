@@ -35,27 +35,6 @@ class HeroesTableViewController: UITableViewController {
             }
         }
     }
-
-    //Navigation
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextViewController = DetailViewController ()
-  
-        nextViewController.setHero(model: heroes[indexPath.row])
-        
-        navigationController?.pushViewController(nextViewController, animated: true)
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return heroes.count
-    }
     
     //Insert Cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,5 +47,36 @@ class HeroesTableViewController: UITableViewController {
         
         return cell
     }
+
+    //Navigation
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextViewController = DetailViewController ()
+  
+        nextViewController.setHero(model: heroes[indexPath.row])
+        
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+      cell.center.x += 50
+      UIView.animate(withDuration: 0.5) {
+        cell.center.x -= 50
+      }
+    }    
+}
+
+
+
+// MARK: - Table view data source
+
+extension HeroesTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+    // #warning Incomplete implementation, return the number of sections
+    return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // #warning Incomplete implementation, return the number of rows
+    return heroes.count
+    }
 }
