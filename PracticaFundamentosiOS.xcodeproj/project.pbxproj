@@ -32,6 +32,10 @@
 		23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 		23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */; };
+		23B609E728D57D3C00E526E6 /* noTransformations.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E328D57D3B00E526E6 /* noTransformations.json */; };
+		23B609E828D57D3C00E526E6 /* heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E428D57D3C00E526E6 /* heroes.json */; };
+		23B609E928D57D3C00E526E6 /* transformations.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E528D57D3C00E526E6 /* transformations.json */; };
+		23B609EA28D57D3C00E526E6 /* noHeroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E628D57D3C00E526E6 /* noHeroes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModelTets.swift; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 		23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		23B609E328D57D3B00E526E6 /* noTransformations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noTransformations.json; sourceTree = "<group>"; };
+		23B609E428D57D3C00E526E6 /* heroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heroes.json; sourceTree = "<group>"; };
+		23B609E528D57D3C00E526E6 /* transformations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transformations.json; sourceTree = "<group>"; };
+		23B609E628D57D3C00E526E6 /* noHeroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noHeroes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,10 @@
 		230E885C28C04296007155BA /* PracticaFundamentosiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				23B609E428D57D3C00E526E6 /* heroes.json */,
+				23B609E628D57D3C00E526E6 /* noHeroes.json */,
+				23B609E528D57D3C00E526E6 /* transformations.json */,
+				23B609E328D57D3B00E526E6 /* noTransformations.json */,
 				23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */,
 				2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */,
 			);
@@ -303,6 +315,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B609EA28D57D3C00E526E6 /* noHeroes.json in Resources */,
+				23B609E728D57D3C00E526E6 /* noTransformations.json in Resources */,
+				23B609E828D57D3C00E526E6 /* heroes.json in Resources */,
+				23B609E928D57D3C00E526E6 /* transformations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

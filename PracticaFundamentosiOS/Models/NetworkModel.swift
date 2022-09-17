@@ -20,12 +20,12 @@ enum NetworkError: Error {
 
 class NetworkModel {
     let server = "https://vapor2022.herokuapp.com/api"
-    let session = URLSession
-        .shared
+    let urlSession: URLSession
     var token: String?
     
-    init(token: String? = nil) {
+    init(urlSession: URLSession = .shared, token: String? = nil) {
         self.token = token
+        self.urlSession = urlSession
     }
     
     
@@ -47,7 +47,7 @@ class NetworkModel {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion(nil, .otherError)
                 return
@@ -96,7 +96,7 @@ class NetworkModel {
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return
@@ -134,28 +134,17 @@ class NetworkModel {
             return
             
         }
+
+        //urlRequet body with urlComponents
+        var urlComponents = URLComponents()
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: hero.id)]
+
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        struct Body: Encodable {
-            let id: String
-        }
-        let body = Body(id: hero.id)
-
-        urlRequest.httpBody = try? JSONEncoder().encode(body)
+        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
         
-        //Other way
-//        var urlComponents = URLComponents()
-//        urlComponents.queryItems = [URLQueryItem(name: "id", value: hero.id)]
-//
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-        
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return
