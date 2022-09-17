@@ -20,6 +20,8 @@ enum NetworkError: Error {
 
 class NetworkModel {
     let server = "https://vapor2022.herokuapp.com/api"
+    let session = URLSession
+        .shared
     var token: String?
     
     init(token: String? = nil) {
@@ -45,7 +47,7 @@ class NetworkModel {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion(nil, .otherError)
                 return
@@ -94,7 +96,7 @@ class NetworkModel {
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return
@@ -157,7 +159,7 @@ class NetworkModel {
 //        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
     
         
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return

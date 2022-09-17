@@ -11,7 +11,6 @@
 		230E884928C04295007155BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E884828C04295007155BA /* SceneDelegate.swift */; };
 		230E885028C04296007155BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230E884F28C04296007155BA /* Assets.xcassets */; };
 		230E885328C04296007155BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230E885128C04296007155BA /* LaunchScreen.storyboard */; };
-		230E885E28C04296007155BA /* PracticaFundamentosiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */; };
 		234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234AB70128CEA76B00562E81 /* TableViewCell.swift */; };
 		234AB70428CEA76B00562E81 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 234AB70228CEA76B00562E81 /* TableViewCell.xib */; };
 		23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */; };
@@ -19,6 +18,7 @@
 		235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A9BA828CF92E20055BCA5 /* HeroModel.swift */; };
 		235A9BAB28CF956B0055BCA5 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */; };
 		235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A9BAC28CFA2AF0055BCA5 /* NetworkModel.swift */; };
+		2364F6E428D4CF160077D7A1 /* NetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
 		236BD51528CE9C7400687773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236BD51328CE9C7400687773 /* LoginViewController.xib */; };
 		236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */; };
@@ -51,7 +51,6 @@
 		230E885228C04296007155BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		230E885428C04296007155BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		230E885928C04296007155BA /* PracticaFundamentosiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFundamentosiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFundamentosiOSTests.swift; sourceTree = "<group>"; };
 		234AB70128CEA76B00562E81 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		234AB70228CEA76B00562E81 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		23532BFA28CEB9AE00C23C60 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		235A9BA828CF92E20055BCA5 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
 		235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		235A9BAC28CFA2AF0055BCA5 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelTests.swift; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		236BD51328CE9C7400687773 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 		230E885C28C04296007155BA /* PracticaFundamentosiOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				230E885D28C04296007155BA /* PracticaFundamentosiOSTests.swift */,
 				23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */,
+				2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */,
 			);
 			path = PracticaFundamentosiOSTests;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				230E885E28C04296007155BA /* PracticaFundamentosiOSTests.swift in Sources */,
+				2364F6E428D4CF160077D7A1 /* NetworkModelTests.swift in Sources */,
 				23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
