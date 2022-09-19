@@ -9,103 +9,207 @@ import XCTest
 
 @testable import PracticaFundamentosiOS
 
-final class NetworkModelTests: XCTestCase {
-    //sut -> System under testing
-    private var urlSessionMock: URLSessionMock!
-    private var sut: NetworkModel!
+enum ErrorMock: Error {
+    case mockCase
+}
 
+final class NetworkModelTests: XCTestCase {
+    private var urlSessionMock: URLSessionMock!
+    //sut -> System under testing
+    private var sut: NetworkModel!
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        urlSessionMock = URLSessionMock()
         sut = NetworkModel(urlSession: urlSessionMock)
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         sut = nil
     }
-
-    func testLoginSuccess() throws {
+    
+    func testLoginFailWithNoData() {
         //Given
-        let expectation = expectation(description: "Login Success")
+        var error: NetworkError?
+        
+        urlSessionMock.data = nil
+        
+        //When
+        sut.login(user: "", password: "") { _, networkError in
+            error = networkError
+        }
+        
+        //Then
+        XCTAssertEqual(error, .noData)
+    }
+    
+    func testLoginFailWithError() {
+            //Given
+            var error: NetworkError?
+            
+            urlSessionMock.data = nil
+            urlSessionMock.error = ErrorMock.mockCase
+            
+            //When
+            sut.login(user: "", password: "") { _, networkError in
+                error = networkError
+            }
+        
+            //Then
+            XCTAssertEqual(error, .otherError)
+        }
+    
+    
+    func testLoginFailWithErrorCodeNil() {
+            //Given
+            var error: NetworkError?
+            
+            urlSessionMock.data = "TokenString".data(using: .utf8)!
+            urlSessionMock.response = nil
+            
+            //When
+            sut.login(user: "", password: "") { _, networkError in
+                error = networkError
+            }
+        
+            //Then
+            XCTAssertEqual(error, .errorCode(nil))
+        }
+    
+    func testLoginFailWithErrorCode() {
+            //Given
+            var error: NetworkError?
+            
+            urlSessionMock.data = "TokenString".data(using: .utf8)!
+            urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 404, httpVersion: nil, headerFields: nil)
+            
+            //When
+            sut.login(user: "", password: "") { _, networkError in
+                error = networkError
+            }
+        
+            //Then
+            XCTAssertEqual(error, .errorCode(404))
+        }
+    
+    
+        
+    func testLoginSuccessWithMockToken() throws {
+        //Given
         var retrievedToken: String?
         var error: NetworkError?
         
+        urlSessionMock.data = "TokenString".data(using: .utf8)!
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+
         //When
-        sut.login(user: "rrojo.va@gmail.com", password: "123456") { token, networkError in
+        sut.login(user: "", password: "") { token, networkError in
             retrievedToken = token
             error = networkError
-            expectation.fulfill()
         }
-        waitForExpectations(timeout: 5)
-        
+
         //Then
         XCTAssertNotNil(retrievedToken, "Should have received a token")
         XCTAssertNil(error, "Should no be an error")
     }
+
+    func testGetHeroesSuccess() {
     
-//    func testLoginFail() throws {
-//        //Given
-//        let expectation = expectation(description: "Login Fail")
-//        var retrievedToken: String?
+        var retrievedHeroes: [Hero]?
+        var error: NetworkError?
+        
+        //Given
+        sut.token = "TokenString"
+        urlSessionMock.data = getHeroesData()
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+
+        //When
+        sut.getHeroes { heroes, networkErrror in
+            retrievedHeroes = heroes
+            error = networkErrror
+        }
+        
+        //Then
+        XCTAssertNotNil(urlSessionMock.data)
+        XCTAssertTrue(retrievedHeroes?.count ?? 0 > 0, "Should have received heroes")
+        XCTAssertNil(error, "Should no be an error")
+        }
+
+//    func testGetTransformationsSuccess() {
+//        
+//        var retrievedTransformations: [Transformation]?
 //        var error: NetworkError?
 //        
-//        //When
-//        sut.login(user: "", password: "") { token, networkError in
-//            retrievedToken = token
-//            error = networkError
-//            expectation.fulfill()
-//        }
-//        
-//        //Then
-//        waitForExpectations(timeout: 5)
-//        XCTAssertNil(retrievedToken, "Should have not received a token")
-//        XCTAssertNotNil(error, "Should be an error")
-//        
-//    }
-//    
-//    func testgetHeroesSuccess() throws {
 //        //Given
-//        let expectation = expectation(description: "getHeroes Success")
-//        var retrievedHeroes: [Hero]?
-//        var error: NetworkError?
-//        var retrievedToken: String?
+//        sut.token = "TokenString"
+//        urlSessionMock.data = getTransformationsData()
+//        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
 //        
 //        //When
-//        sut.login(user: "rrojo.va@gmail.com", password: "123456") { token, networkError in
-//            retrievedToken = token
+//        sut.getTransformations(id: "") { transformations, networkError in
+//            retrievedTransformations = transformations
 //            error = networkError
-//            expectation.fulfill()
-//        }
-//        waitForExpectations(timeout: 5)
-//        
-//        sut.getHeroes(name: "") { heroes, networkError in
-//            retrievedHeroes = heroes
-//            error = networkError
-//            expectation.fulfill()
-//        }
-//        
-//        //Then
-//        waitForExpectations(timeout: 5)
-//        XCTAssertNotNil(retrievedHeroes, "Should have received heroes")
-//        XCTAssertNil(error, "Should no be an error")
-//    }
-//        
-//        func testgetHeroesFail() throws {
-//            //Given
-//            let expectation = expectation(description: "getHeroes Fail")
-//            var retrievedHeroes: [Hero]?
-//            var error: NetworkError?
 //            
-//            //When
-//            sut.getHeroes(name: "NoName") { heroes, networkError in
-//                retrievedHeroes = heroes
-//                error = networkError
-//                expectation.fulfill()
-//            }
-//            
+//        }
 //            //Then
-//            waitForExpectations(timeout: 5)
-//            XCTAssertNil(retrievedHeroes, "Should have not received heroes")
-//            XCTAssertNotNil(error, "Should be an error")
+//            XCTAssertNotNil(urlSessionMock.data)
+//            XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received transformations")
+//            XCTAssertNil(error, "Should no be an error")
 //        }
+
+    
+//    func testGetTransformationsSuccess() {
+//
+//        var retrievedTransformations: [Transformation]?
+//        var error: NetworkError?
+//        var hero: Hero
+//
+//        //Given
+//        sut.token = "TokenString"
+//        urlSessionMock.data = getTransformationsData()
+//        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+//
+//        //When
+//
+//        sut.getDataApi(id: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94", type: [Transformation].self, completion: {result in
+//            switch result {
+//
+//                case .success(transformations):
+//                    retrievedTransformations = transformations
+//
+//                case .failure(let error):
+//                    print("There is an error: \(error)")
+//                    break
+//            }
+//        })
+//
+//            //Then
+//            XCTAssertNotNil(urlSessionMock.data)
+//            XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received tranformations")
+//            XCTAssertNil(error, "Should no be an error")
+//        }
+        
+}
+
+
+extension NetworkModelTests {
+    
+    func getHeroesData() -> Data? {
+        
+        let bundle = Bundle(for: NetworkModelTests.self)
+        
+        guard let path = bundle.path(forResource: "heroes", ofType: "json") else { return nil}
+        
+        return try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
     }
+    
+    func getTransformationsData() -> Data? {
+        
+        let bundle = Bundle(for: NetworkModelTests.self)
+        
+        guard let path = bundle.path(forResource: "transformations", ofType: "json") else { return nil}
+        
+        return try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+    }
+}

@@ -41,6 +41,7 @@ class DetailViewController: UIViewController {
         if DragonBall.character == "hero" {
             
             guard let hero = hero else { return }
+            
             self.nameLabel.text = hero.name
             self.descriptionTextView.text = hero.description
             self.imageView.setImage(url: hero.photo)

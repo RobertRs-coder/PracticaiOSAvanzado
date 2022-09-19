@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case malformedURL
     case dataFormat
     case otherError
@@ -124,7 +124,7 @@ class NetworkModel {
         
     }
     
-    func getTransformations(hero: Hero, completion: @escaping ([Transformation], NetworkError?) -> Void) {
+    func getTransformations(id: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
         guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion([], .malformedURL)
             return
@@ -137,7 +137,7 @@ class NetworkModel {
 
         //urlRequet body with urlComponents
         var urlComponents = URLComponents()
-        urlComponents.queryItems = [URLQueryItem(name: "id", value: hero.id)]
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"

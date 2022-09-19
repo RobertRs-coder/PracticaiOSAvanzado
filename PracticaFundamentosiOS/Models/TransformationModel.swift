@@ -12,4 +12,5 @@ struct Transformation: TableViewDisplayable, DetailViewDisplayable, Decodable {
     let id: String
     let name: String
     let description: String
+    let hero: Hero
 }
