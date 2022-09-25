@@ -76,55 +76,75 @@ class NetworkModel {
     
     func getHeroes(name: String = "", completion: @escaping ([Hero], NetworkError?) -> Void) {
         
-        
-        
-        guard let url = URL(string: "\(server)/heros/all") else {
-            completion([], .malformedURL)
-            return
-        }
-        guard let token = self.token else {
-            completion([], .otherError)
-            return
-            
-        }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let urlString = "\(server)/heros/all"
         
         struct Body: Encodable {
             let name: String
         }
-        let body = Body(name: name)
         
-        urlRequest.httpBody = try? JSONEncoder().encode(body)
-        
-        let task = session.dataTask(with: urlRequest) { data, response, error in
-            guard error == nil else {
-                completion([], .otherError)
-                return
-            }
-            
-            guard let data = data else {
-                completion([], .noData)
-                return
-            }
-            
-            guard let httpResponse = (response as? HTTPURLResponse),
-                  httpResponse.statusCode == 200 else {
-                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-                return
-            }
-            
-            guard let heroesResponse = try? JSONDecoder().decode([Hero].self, from: data) else {
-                completion([], .decodingError)
-                return
-            }
-            
-            completion(heroesResponse, nil)
+        guard let token else {
+            fatalError("No token")
         }
-        task.resume()
         
+        performAuthenticatedNetworkRequest(urlString,
+                                           httpMethod: .post,
+                                           httpBody: Body(name: ""),
+                                           requestToken: token) { (result: Result<[Hero], NetworkError>)  in
+            switch result {
+            case .success(let success):
+                completion(success, nil)
+            case .failure(let failure):
+                completion([], failure)
+            }
+        }
+        
+//        guard let url = URL(string: "\(server)/heros/all") else {
+//            completion([], .malformedURL)
+//            return
+//        }
+//        guard let token = self.token else {
+//            completion([], .otherError)
+//            return
+//
+//        }
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        struct Body: Encodable {
+//            let name: String
+//        }
+//        let body = Body(name: name)
+//
+//        urlRequest.httpBody = try? JSONEncoder().encode(body)
+//
+//        let task = session.dataTask(with: urlRequest) { data, response, error in
+//            guard error == nil else {
+//                completion([], .otherError)
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion([], .noData)
+//                return
+//            }
+//
+//            guard let httpResponse = (response as? HTTPURLResponse),
+//                  httpResponse.statusCode == 200 else {
+//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
+//                return
+//            }
+//
+//            guard let heroesResponse = try? JSONDecoder().decode([Hero].self, from: data) else {
+//                completion([], .decodingError)
+//                return
+//            }
+//
+//            completion(heroesResponse, nil)
+//        }
+//        task.resume()
+//
     }
     
     func getTransformations(id: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
@@ -150,52 +170,51 @@ class NetworkModel {
                 completion([], failure)
             }
         }
-        
-        
-        guard let url = URL(string: "\(server)/heros/tranformations") else {
-            completion([], .malformedURL)
-            return
-        }
-        guard let token = self.token else {
-            completion([], .otherError)
-            return
-            
-        }
 
-        //urlRequet body with urlComponents
-        var urlComponents = URLComponents()
-        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
-
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-        
-        let task = session.dataTask(with: urlRequest) { data, response, error in
-            guard error == nil else {
-                completion([], .otherError)
-                return
-            }
-            
-            guard let data = data else {
-                completion([], .noData)
-                return
-            }
-            
-            guard let httpResponse = (response as? HTTPURLResponse),
-                  httpResponse.statusCode == 200 else {
-                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-                return
-            }
-            
-            guard let transformationsResponse = try? JSONDecoder().decode([Transformation].self, from: data) else {
-                completion([], .decodingError)
-                return
-            }
-            
-            completion(transformationsResponse, nil)
-        }
-        task.resume()
+//        guard let url = URL(string: "\(server)/heros/tranformations") else {
+//            completion([], .malformedURL)
+//            return
+//        }
+//        guard let token = self.token else {
+//            completion([], .otherError)
+//            return
+//
+//        }
+//
+//        //urlRequet body with urlComponents
+//        var urlComponents = URLComponents()
+//        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+//
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+//
+//        let task = session.dataTask(with: urlRequest) { data, response, error in
+//            guard error == nil else {
+//                completion([], .otherError)
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion([], .noData)
+//                return
+//            }
+//
+//            guard let httpResponse = (response as? HTTPURLResponse),
+//                  httpResponse.statusCode == 200 else {
+//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
+//                return
+//            }
+//
+//            guard let transformationsResponse = try? JSONDecoder().decode([Transformation].self, from: data) else {
+//                completion([], .decodingError)
+//                return
+//            }
+//
+//            completion(transformationsResponse, nil)
+//        }
+//        task.resume()
     }
         
 }
@@ -254,12 +273,6 @@ private extension NetworkModel {
         }
         task.resume()
     }
-
-
-
-
-
-
 
 //    func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
 //
