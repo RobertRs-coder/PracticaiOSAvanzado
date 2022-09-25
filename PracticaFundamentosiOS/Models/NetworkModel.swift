@@ -20,12 +20,12 @@ enum NetworkError: Error, Equatable {
 
 class NetworkModel {
     let server = "https://vapor2022.herokuapp.com/api"
-    let urlSession: URLSession
+    let session: URLSession
     var token: String?
     
     init(urlSession: URLSession = .shared, token: String? = nil) {
         self.token = token
-        self.urlSession = urlSession
+        self.session = urlSession
     }
     
     
@@ -47,7 +47,7 @@ class NetworkModel {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         
-        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion(nil, .otherError)
                 return
@@ -96,7 +96,7 @@ class NetworkModel {
         
         urlRequest.httpBody = try? JSONEncoder().encode(body)
         
-        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return
@@ -144,7 +144,7 @@ class NetworkModel {
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
         
-        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion([], .otherError)
                 return
@@ -177,6 +177,7 @@ enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }
+
 private extension NetworkModel {
     
     
@@ -184,7 +185,7 @@ private extension NetworkModel {
         _ urlString: String,
         httpMethod: HTTPMethod,
         httpBody: B?,
-        requesToken: String,
+        requestToken: String,
     completion: @escaping (Result<R, NetworkError>) -> Void
     ){
         guard let url = URL(string: urlString) else {
@@ -194,44 +195,13 @@ private extension NetworkModel {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = httpMethod.rawValue
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer \(String(describing: requestToken))", forHTTPHeaderField: "Authorization")
         
         if let httpBody {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = try? JSONEncoder().encode(httpBody)
         }
-        
-        
-    }
-
-
-
-
-
-
-
-    func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
-
-        guard let url = URL(string: "\(server)/heros/tranformations") else {
-            completion(.failure(NetworkError.malformedURL))
-            return
-        }
-
-        guard let token = self.token else {
-            completion(.failure(NetworkError.otherError))
-            return
-        }
-
-        let session = URLSession.shared
-        
-        var urlComponents = URLComponents()
-        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-
+        // Same as other functions
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion(.failure(NetworkError.malformedURL))
@@ -249,13 +219,68 @@ private extension NetworkModel {
                 return
             }
 
-            guard let response = try? JSONDecoder().decode(T.self, from: data) else {
+            guard let response = try? JSONDecoder().decode(R.self, from: data) else {
                 completion(.failure(NetworkError.decodingError))
                 return
             }
             completion(.success(response))
         }
         task.resume()
+
     }
+
+
+
+
+
+
+
+//    func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+//
+//        guard let url = URL(string: "\(server)/heros/tranformations") else {
+//            completion(.failure(NetworkError.malformedURL))
+//            return
+//        }
+//
+//        guard let token = self.token else {
+//            completion(.failure(NetworkError.otherError))
+//            return
+//        }
+//
+//        let session = URLSession.shared
+//
+//        var urlComponents = URLComponents()
+//        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
+//
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
+//
+//        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+//            guard error == nil else {
+//                completion(.failure(NetworkError.malformedURL))
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion(.failure(NetworkError.noData))
+//                return
+//            }
+//
+//            guard let httpResponse = (response as? HTTPURLResponse),
+//                  httpResponse.statusCode == 200 else {
+//                completion(.failure(NetworkError.httpResponse))
+//                return
+//            }
+//
+//            guard let response = try? JSONDecoder().decode(T.self, from: data) else {
+//                completion(.failure(NetworkError.decodingError))
+//                return
+//            }
+//            completion(.success(response))
+//        }
+//        task.resume()
+//    }
 
 }
