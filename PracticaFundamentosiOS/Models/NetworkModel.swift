@@ -75,6 +75,9 @@ class NetworkModel {
     }
     
     func getHeroes(name: String = "", completion: @escaping ([Hero], NetworkError?) -> Void) {
+        
+        
+        
         guard let url = URL(string: "\(server)/heros/all") else {
             completion([], .malformedURL)
             return
@@ -125,6 +128,30 @@ class NetworkModel {
     }
     
     func getTransformations(id: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
+        
+        let urlString = "\(server)/heros/tranformations"
+        
+        struct Body: Encodable {
+            let  id: String
+        }
+        
+        guard let token else {
+            fatalError("No token")
+        }
+        
+        performAuthenticatedNetworkRequest(urlString,
+                                           httpMethod: .post,
+                                           httpBody: Body(id: id),
+                                           requestToken: token) { (result: Result<[Transformation], NetworkError>)  in
+            switch result {
+            case .success(let success):
+                completion(success, nil)
+            case .failure(let failure):
+                completion([], failure)
+            }
+        }
+        
+        
         guard let url = URL(string: "\(server)/heros/tranformations") else {
             completion([], .malformedURL)
             return
@@ -186,8 +213,8 @@ private extension NetworkModel {
         httpMethod: HTTPMethod,
         httpBody: B?,
         requestToken: String,
-    completion: @escaping (Result<R, NetworkError>) -> Void
-    ){
+    completion: @escaping (Result<R, NetworkError>) -> Void){
+        
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.malformedURL))
             return
@@ -226,7 +253,6 @@ private extension NetworkModel {
             completion(.success(response))
         }
         task.resume()
-
     }
 
 
