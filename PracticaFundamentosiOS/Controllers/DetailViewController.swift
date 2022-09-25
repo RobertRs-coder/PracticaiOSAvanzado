@@ -50,27 +50,6 @@ class DetailViewController: UIViewController {
             guard let token = KeychainSwift().get("KCToken") else { return }
             
             let networkModel = NetworkModel(token: token)
-//            networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { [weak self] result in
-//
-//                switch result {
-//
-//                case .success(let data):
-//                    //Main thread to get data ASAP at first time
-//                    DispatchQueue.main.sync {
-//                        self?.transformations = data
-//                        let transformationsCount = self?.transformations?.count
-//                        self?.transformationsButton.isHidden = transformationsCount == 0
-//                    }
-//
-//                    self?.transformations = self?.transformations?.sorted {
-//                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
-//                    }
-//
-//                case .failure(let error):
-//                    print("There is an error: \(error)")
-//                    break
-//                }
-//            })
             
             networkModel.getTransformations(id: hero.id) { [weak self] transformations, error in
                 DispatchQueue.main.sync {

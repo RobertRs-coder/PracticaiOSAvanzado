@@ -97,54 +97,6 @@ class NetworkModel {
                 completion([], failure)
             }
         }
-        
-//        guard let url = URL(string: "\(server)/heros/all") else {
-//            completion([], .malformedURL)
-//            return
-//        }
-//        guard let token = self.token else {
-//            completion([], .otherError)
-//            return
-//
-//        }
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        struct Body: Encodable {
-//            let name: String
-//        }
-//        let body = Body(name: name)
-//
-//        urlRequest.httpBody = try? JSONEncoder().encode(body)
-//
-//        let task = session.dataTask(with: urlRequest) { data, response, error in
-//            guard error == nil else {
-//                completion([], .otherError)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion([], .noData)
-//                return
-//            }
-//
-//            guard let httpResponse = (response as? HTTPURLResponse),
-//                  httpResponse.statusCode == 200 else {
-//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-//                return
-//            }
-//
-//            guard let heroesResponse = try? JSONDecoder().decode([Hero].self, from: data) else {
-//                completion([], .decodingError)
-//                return
-//            }
-//
-//            completion(heroesResponse, nil)
-//        }
-//        task.resume()
-//
     }
     
     func getTransformations(id: String, completion: @escaping ([Transformation], NetworkError?) -> Void) {
@@ -170,53 +122,7 @@ class NetworkModel {
                 completion([], failure)
             }
         }
-
-//        guard let url = URL(string: "\(server)/heros/tranformations") else {
-//            completion([], .malformedURL)
-//            return
-//        }
-//        guard let token = self.token else {
-//            completion([], .otherError)
-//            return
-//
-//        }
-//
-//        //urlRequet body with urlComponents
-//        var urlComponents = URLComponents()
-//        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
-//
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-//
-//        let task = session.dataTask(with: urlRequest) { data, response, error in
-//            guard error == nil else {
-//                completion([], .otherError)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion([], .noData)
-//                return
-//            }
-//
-//            guard let httpResponse = (response as? HTTPURLResponse),
-//                  httpResponse.statusCode == 200 else {
-//                completion([], .errorCode((response as? HTTPURLResponse)?.statusCode ))
-//                return
-//            }
-//
-//            guard let transformationsResponse = try? JSONDecoder().decode([Transformation].self, from: data) else {
-//                completion([], .decodingError)
-//                return
-//            }
-//
-//            completion(transformationsResponse, nil)
-//        }
-//        task.resume()
     }
-        
 }
 
 enum HTTPMethod: String {
@@ -225,7 +131,6 @@ enum HTTPMethod: String {
 }
 
 private extension NetworkModel {
-    
     
     func performAuthenticatedNetworkRequest<R: Decodable, B: Encodable>(
         _ urlString: String,
@@ -247,7 +152,7 @@ private extension NetworkModel {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = try? JSONEncoder().encode(httpBody)
         }
-        // Same as other functions
+
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion(.failure(NetworkError.malformedURL))
@@ -273,53 +178,4 @@ private extension NetworkModel {
         }
         task.resume()
     }
-
-//    func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
-//
-//        guard let url = URL(string: "\(server)/heros/tranformations") else {
-//            completion(.failure(NetworkError.malformedURL))
-//            return
-//        }
-//
-//        guard let token = self.token else {
-//            completion(.failure(NetworkError.otherError))
-//            return
-//        }
-//
-//        let session = URLSession.shared
-//
-//        var urlComponents = URLComponents()
-//        urlComponents.queryItems = [URLQueryItem(name: "id", value: id)]
-//
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-//
-//        let task = session.dataTask(with: urlRequest) { (data, response, error) in
-//            guard error == nil else {
-//                completion(.failure(NetworkError.malformedURL))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(NetworkError.noData))
-//                return
-//            }
-//
-//            guard let httpResponse = (response as? HTTPURLResponse),
-//                  httpResponse.statusCode == 200 else {
-//                completion(.failure(NetworkError.httpResponse))
-//                return
-//            }
-//
-//            guard let response = try? JSONDecoder().decode(T.self, from: data) else {
-//                completion(.failure(NetworkError.decodingError))
-//                return
-//            }
-//            completion(.success(response))
-//        }
-//        task.resume()
-//    }
-
 }
