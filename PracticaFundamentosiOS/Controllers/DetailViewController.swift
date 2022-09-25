@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 private enum DragonBall {
     static var character = ""
@@ -46,7 +47,7 @@ class DetailViewController: UIViewController {
             self.descriptionTextView.text = hero.description
             self.imageView.setImage(url: hero.photo)
             
-            guard let token = LocalDataModel.getToken() else { return }
+            guard let token = KeychainSwift().get("KCToken") else { return }
             
             let networkModel = NetworkModel(token: token)
             networkModel.getDataApi(id: hero.id, type: [Transformation].self, completion: { [weak self] result in

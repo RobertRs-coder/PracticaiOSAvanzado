@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class LoginViewController: UIViewController {
     
@@ -35,7 +36,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if LocalDataModel.getToken() == nil {
+        if KeychainSwift().get("KCToken") == nil {
             userTextField.center.x -= view.bounds.width
             passwordTextField.center.x -=  view.bounds.width
             UIView.animate(withDuration: 0.75,
@@ -95,7 +96,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            LocalDataModel.saveToken(token: token)
+            KeychainSwift().set(token, forKey: "KCToken")
             
             DispatchQueue.main.async {
                 let tabBarController = CustomTabBarController()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         
         // if user is logged in before
-        if LocalDataModel.getToken() != nil {
+        if KeychainSwift().get("KCToken") != nil {
            // instantiate the custom tab bar controller and set it as root view controller
             
             let customTabBarController = CustomTabBarController()

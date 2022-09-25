@@ -136,34 +136,34 @@ final class NetworkModelTests: XCTestCase {
         XCTAssertNil(error, "Should no be an error")
         }
 
-//    func testGetTransformationsSuccess() {
-//        
-//        var retrievedTransformations: [Transformation]?
-//        var error: NetworkError?
-//        
-//        //Given
-//        sut.token = "TokenString"
-//        urlSessionMock.data = getTransformationsData()
-//        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-//        
-//        //When
-//        sut.getTransformations(id: "") { transformations, networkError in
-//            retrievedTransformations = transformations
-//            error = networkError
-//            
-//        }
-//            //Then
-//            XCTAssertNotNil(urlSessionMock.data)
-//            XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received transformations")
-//            XCTAssertNil(error, "Should no be an error")
-//        }
+    func testGetTransformationsSuccess() {
+        
+        var retrievedTransformations: [Transformation]?
+        var error: NetworkError?
+        
+        //Given
+        sut.token = "TokenString"
+        urlSessionMock.data = getTransformationsData()
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        //When
+        sut.getTransformations(id: "") { transformations, networkError in
+            retrievedTransformations = transformations
+            error = networkError
+            
+        }
+            //Then
+            XCTAssertNotNil(urlSessionMock.data)
+            XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received transformations")
+            XCTAssertNil(error, "Should no be an error")
+        }
 
     
-//    func testGetTransformationsSuccess() {
+    //Error??
+//    func testGetTransformationsGenericSuccess() {
 //
 //        var retrievedTransformations: [Transformation]?
 //        var error: NetworkError?
-//        var hero: Hero
 //
 //        //Given
 //        sut.token = "TokenString"
@@ -175,8 +175,8 @@ final class NetworkModelTests: XCTestCase {
 //        sut.getDataApi(id: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94", type: [Transformation].self, completion: {result in
 //            switch result {
 //
-//                case .success(transformations):
-//                    retrievedTransformations = transformations
+//                case .success(let data):
+//                retrievedTransformations = data
 //
 //                case .failure(let error):
 //                    print("There is an error: \(error)")

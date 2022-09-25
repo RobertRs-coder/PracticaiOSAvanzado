@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class HeroesTableViewController: UITableViewController {
     
@@ -22,7 +23,7 @@ class HeroesTableViewController: UITableViewController {
                                  bundle: nil),
                            forCellReuseIdentifier: "cell")
         
-        guard let token = LocalDataModel.getToken() else { return }
+        guard let token = KeychainSwift().get("KCToken") else { return }
         //Network call
         let networkModel =  NetworkModel(token: token)
         

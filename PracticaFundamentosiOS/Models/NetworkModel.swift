@@ -170,8 +170,46 @@ class NetworkModel {
         }
         task.resume()
     }
+        
+}
+
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+private extension NetworkModel {
     
-    //GenericFunction
+    
+    func performAuthenticatedNetworkRequest<R: Decodable, B: Encodable>(
+        _ urlString: String,
+        httpMethod: HTTPMethod,
+        httpBody: B?,
+        requesToken: String,
+    completion: @escaping (Result<R, NetworkError>) -> Void
+    ){
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.malformedURL))
+            return
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = httpMethod.rawValue
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        if let httpBody {
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try? JSONEncoder().encode(httpBody)
+        }
+        
+        
+    }
+
+
+
+
+
+
+
     func getDataApi<T: Decodable>(id: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
 
         guard let url = URL(string: "\(server)/heros/tranformations") else {
@@ -219,4 +257,5 @@ class NetworkModel {
         }
         task.resume()
     }
+
 }
