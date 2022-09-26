@@ -52,16 +52,25 @@ final class HeroesTableViewModel {
                     self?.onError?("Heroes error\(error.localizedDescription)")
                 }   else {
                     self?.content = heroes
-                    self?.onSuccess?()
-                    LocalDataModel.saveSyncDate()
                     self?.save(heroes: heroes)
+                    
+                    let group = DispatchGroup()
+                    
+                    heroes.forEach { hero in
+                        group.enter()
+                        self?.downloadTransformations(for: hero) {
+                            group.leave()
+                        }
+                    }
+                    group.notify(queue: .global()) {
+                        LocalDataModel.saveSyncDate()
+                        if let cdHeroes = self?.coreDataManager.fecthHeroes() {
+                            self?.content = cdHeroes.map { $0.hero }
+                        }
+                        self?.onSuccess?()
+                    }
                 }
-                
-                return
             }
-            print("Heroes from coreData")
-            content = cdHeroes.map { $0.hero }
-            onSuccess?()
             return
         }
     }
