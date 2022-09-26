@@ -157,41 +157,7 @@ final class NetworkModelTests: XCTestCase {
             XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received transformations")
             XCTAssertNil(error, "Should no be an error")
         }
-
-    
-    //Error??
-//    func testGetTransformationsGenericSuccess() {
-//
-//        var retrievedTransformations: [Transformation]?
-//        var error: NetworkError?
-//
-//        //Given
-//        sut.token = "TokenString"
-//        urlSessionMock.data = getTransformationsData()
-//        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-//
-//        //When
-//
-//        sut.getDataApi(id: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94", type: [Transformation].self, completion: {result in
-//            switch result {
-//
-//                case .success(let data):
-//                retrievedTransformations = data
-//
-//                case .failure(let error):
-//                    print("There is an error: \(error)")
-//                    break
-//            }
-//        })
-//
-//            //Then
-//            XCTAssertNotNil(urlSessionMock.data)
-//            XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received tranformations")
-//            XCTAssertNil(error, "Should no be an error")
-//        }
-        
 }
-
 
 extension NetworkModelTests {
     
