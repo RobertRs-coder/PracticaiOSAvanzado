@@ -15,7 +15,7 @@ public class CDTransformation: NSManagedObject {
 }
 
 extension CDTransformation {
-    func create(from transformation: Transformation, for hero: CDHero, context: NSManagedObjectContext) -> CDTransformation {
+    static func create(from transformation: Transformation, for hero: CDHero, context: NSManagedObjectContext) -> CDTransformation {
         let cdTransformation = CDTransformation(context: context)
         cdTransformation.id = transformation.id
         cdTransformation.name = transformation.name

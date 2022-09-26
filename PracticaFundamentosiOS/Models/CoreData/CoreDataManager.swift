@@ -36,6 +36,24 @@ final class CoreDataManager {
         return []
     }
     
+    func fetchHero(id heroId: String) -> CDHero? {
+        let request = CDHero.createFetchRequest()
+        let predicate = NSPredicate(format:"id == %@", heroId)
+        request.predicate = predicate
+        request.fetchBatchSize = 1
+        
+        do {
+            let result = try context.fetch(request)
+            return result.first
+        } catch {
+            print("Error getting heroes")
+        }
+        
+        return nil
+    }
+    
+    
+    
     func fetchTransformation(for heroId: String) -> [CDTransformation] {
         let request = CDTransformation.createFetchRequest()
         let predicate = NSPredicate(format:"hero.id == %@", heroId)

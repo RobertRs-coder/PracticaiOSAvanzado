@@ -41,29 +41,65 @@ final class HeroesTableViewModel {
         
         //Check date of the coreData
         guard let date = LocalDataModel.getSyncDate(),
-            date.addingTimeInterval(84600) > Date(),
+              date.addingTimeInterval(84600) > Date(),
               !cdHeroes.isEmpty else {
             print("Heroes from networkCall")
             guard let token = keychain.get("KCToken") else { return }
             networkModel.token = token
             
-            networkModel.getHeroes { [weak self] heroes, _ in
-                self?.content = heroes
-                self?.onSuccess?()
-                LocalDataModel.saveSyncDate()
-                self?.save(heroes: heroes)
+            networkModel.getHeroes { [weak self] heroes, error in
+                if let error = error {
+                    self?.onError?("Heroes error\(error.localizedDescription)")
+                }   else {
+                    self?.content = heroes
+                    self?.onSuccess?()
+                    LocalDataModel.saveSyncDate()
+                    self?.save(heroes: heroes)
+                }
+                
+                return
             }
+            print("Heroes from coreData")
+            content = cdHeroes.map { $0.hero }
+            onSuccess?()
             return
         }
-        print("Heroes from coreData")
-        content = cdHeroes.map { $0.hero }
-        onSuccess?()
+    }
+    
+    func downloadTransformations(for hero: Hero, completion: @escaping () -> Void) {
+        let cdTransformations = coreDataManager.fetchTransformation(for: hero.id)
+        if cdTransformations.isEmpty {
+            print("Tranformtaions Network Call")
+            guard let token = keychain.get("KCToken") else {
+                completion()
+                return
+            }
+            
+            networkModel.token = token
+            networkModel.getTransformations(id: hero.id) { [weak self] transformations, error in
+                if let error {
+                    self?.onError?("Error: \(error.localizedDescription)")
+                } else {
+                    self?.save(transformations: transformations, for: hero)
+                }
+                completion()
+            }
+        } else {
+            completion()
+        }
     }
 }
 
+                                            
 private extension HeroesTableViewModel {
-    func save (heroes: [Hero]) {
+    func save(heroes: [Hero]) {
         _ = heroes.map { CDHero.create(from: $0, context: coreDataManager.context) }
+        coreDataManager.saveContext()
+    }
+    
+    func save(transformations: [Transformation], for hero: Hero) {
+        guard let cdHero = coreDataManager.fetchHero(id: hero.id) else { return }
+        _ = transformations.map { CDTransformation.create(from: $0, for: cdHero, context: coreDataManager.context) }
         coreDataManager.saveContext()
     }
 }
