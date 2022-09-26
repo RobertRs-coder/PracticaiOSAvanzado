@@ -8,10 +8,39 @@
 import UIKit
 import KeychainSwift
 
-class HeroesTableViewController: UITableViewController {
+final class HeroesTableViewModel {
+    private let networkModel: NetworkModel
+    private var keychain: KeychainSwift
     
-    //MARK: Constants
-    var heroes: [Hero] = []
+    private(set) var content: [Hero] = []
+    
+    var onError: ((String) -> Void)?
+    var onSuccess: (() -> Void)?
+    
+    init(networkModel: NetworkModel = NetworkModel(),
+         keychain: KeychainSwift = KeychainSwift(),
+         onError: ((String) -> Void)? = nil,
+         onSuccess: (() -> Void)? = nil) {
+        self.networkModel = networkModel
+        self.keychain = keychain
+        self.onError = onError
+        self.onSuccess = onSuccess
+    }
+    
+    func viewDidLoad() {
+        guard let token = keychain.get("KCToken") else { return }
+        networkModel.token = token
+        
+        networkModel.getHeroes { [weak self] heroes, _ in
+            self?.content = heroes
+            self?.onSuccess?()
+        }
+    }
+}
+
+final class HeroesTableViewController: UITableViewController {
+    
+    let viewModel = HeroesTableViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,30 +52,37 @@ class HeroesTableViewController: UITableViewController {
                                  bundle: nil),
                            forCellReuseIdentifier: "cell")
         
-        guard let token = KeychainSwift().get("KCToken") else { return }
-        //Network call
-        let networkModel =  NetworkModel(token: token)
-        
-        networkModel.getHeroes { [weak self] heroes, _ in
+        viewModel.onError = { message in
+            print(message)
+        }
             
-            self?.heroes = heroes
-            
+        viewModel.onSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
         }
-//        KeychainSwift().delete("KCToken")
+        
+        viewModel.viewDidLoad()
+//        guard let token = KeychainSwift().get("KCToken") else { return }
+//        //Network call
+//        let networkModel =  NetworkModel(token: token)
+//
+//        networkModel.getHeroes { [weak self] heroes, _ in
+//
+//            self?.content = heroes
+//
+//            DispatchQueue.main.async {
+//                self?.tableView.reloadData()
+//            }
+//        }
     }
-    
     //Insert Cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
             return UITableViewCell()
         }
-        
         // Configure the cell
-        cell.set(model: heroes[indexPath.row])
-        
+        cell.set(model: viewModel.content[indexPath.row])
         return cell
     }
 
@@ -54,7 +90,7 @@ class HeroesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = DetailViewController ()
   
-        nextViewController.setHero(model: heroes[indexPath.row])
+        nextViewController.setHero(model: viewModel.content[indexPath.row])
         
         navigationController?.pushViewController(nextViewController, animated: true)
     }
@@ -67,9 +103,6 @@ class HeroesTableViewController: UITableViewController {
       }
     }    
 }
-
-
-
 // MARK: - Table view data source
 
 extension HeroesTableViewController {
@@ -80,6 +113,6 @@ extension HeroesTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return heroes.count
+        return viewModel.content.count
     }
 }

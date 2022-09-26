@@ -9,7 +9,7 @@ import UIKit
 import KeychainSwift
 
 final class LoginViewModel {
-    private let network: NetworkModel
+    private let networkModel: NetworkModel
     private var keychain: KeychainSwift
     
     var onError: ((String) -> Void)?
@@ -19,14 +19,14 @@ final class LoginViewModel {
          keychain: KeychainSwift = KeychainSwift(),
          onError: ((String) -> Void)? = nil,
          onLogin: (() -> Void)? = nil) {
-        self.network = network
+        self.networkModel = network
         self.keychain = keychain
         self.onError = onError
         self.onLogin = onLogin
     }
     
     func login(with user: String, password: String) {
-        network.login(user: user, password: password) { [weak self] token, error in
+        networkModel.login(user: user, password: password) { [weak self] token, error in
             
             if error != nil {
                 self?.onError?(error?.localizedDescription ?? "Error")
@@ -40,36 +40,6 @@ final class LoginViewModel {
             self?.onLogin?()
         }
     }
-    //
-    //                DispatchQueue.main.async{
-    //                    //Animations of button and activity indicator
-    //                    self?.loginButton.isEnabled = true
-    //                    self?.activityIndicator.stopAnimating()
-    //                    self?.activityIndicator.isHidden = true
-    //                    return
-    //                }
-    
-    //
-    //            }
-    //
-    //            KeychainSwift().set(token, forKey: "KCToken")
-    //
-    //            DispatchQueue.main.async {
-    //                let tabBarController = CustomTabBarController()
-    //                    // This is to get the SceneDelegate object from your view controller
-    //                    // then call the change root view controller function to change to custom tab bar
-    //                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
-    //                //Animations of button and activity indicator
-    //                self?.loginButton.isEnabled = true
-    //                self?.activityIndicator.stopAnimating()
-    //                self?.activityIndicator.isHidden = true
-    //
-    //                let nextViewController = HeroesTableViewController()
-    //                self?.navigationController?.setViewControllers([nextViewController], animated: true)
-    
-    //            }
-    //        }
-    //    }
 }
 
 final class LoginViewController: UIViewController {
@@ -99,7 +69,6 @@ final class LoginViewController: UIViewController {
                 self?.activityIndicator.isHidden = true
                 self?.showAlert(title: "Error", message: "Problem server connection")
             }
-            
         }
         
         viewModel.onLogin = { [weak self] in
@@ -115,7 +84,6 @@ final class LoginViewController: UIViewController {
 
                 let nextViewController = HeroesTableViewController()
                 self?.navigationController?.setViewControllers([nextViewController], animated: true)
-
             }
         }
     }
@@ -173,39 +141,7 @@ final class LoginViewController: UIViewController {
         activityIndicator.startAnimating()
         
         viewModel.login(with: user, password: password)
-        
-//        network.login(user: user, password: password) { [weak self] token, error in
-//
-//            guard let token = token, !token.isEmpty else {
-//                DispatchQueue.main.async{
-//                    //Animations of button and activity indicator
-//                    self?.loginButton.isEnabled = true
-//                    self?.activityIndicator.stopAnimating()
-//                    self?.activityIndicator.isHidden = true
-//                    return
-//                }
-//
-//                self?.showAlert(title: "Error", message: "Problem server connection")
-//                return
-//            }
-//
-//            KeychainSwift().set(token, forKey: "KCToken")
-//
-//            DispatchQueue.main.async {
-//                let tabBarController = CustomTabBarController()
-//                    // This is to get the SceneDelegate object from your view controller
-//                    // then call the change root view controller function to change to custom tab bar
-//                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tabBarController)
-//                //Animations of button and activity indicator
-//                self?.loginButton.isEnabled = true
-//                self?.activityIndicator.stopAnimating()
-//                self?.activityIndicator.isHidden = true
-//
-//                let nextViewController = HeroesTableViewController()
-//                self?.navigationController?.setViewControllers([nextViewController], animated: true)
-
-//            }
-        }
+    }
 }
 
 
