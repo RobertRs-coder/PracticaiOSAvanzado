@@ -38,6 +38,9 @@
 		23B609E828D57D3C00E526E6 /* heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E428D57D3C00E526E6 /* heroes.json */; };
 		23B609E928D57D3C00E526E6 /* transformations.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E528D57D3C00E526E6 /* transformations.json */; };
 		23B609EA28D57D3C00E526E6 /* noHeroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E628D57D3C00E526E6 /* noHeroes.json */; };
+		23E1D29428E13FA2006C7AC0 /* DBZ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E1D29228E13FA2006C7AC0 /* DBZ.xcdatamodeld */; };
+		23E1D29728E141C3006C7AC0 /* CDHero+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */; };
+		23E1D29828E141C3006C7AC0 /* CDHero+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E1D29628E141C3006C7AC0 /* CDHero+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		23B609E428D57D3C00E526E6 /* heroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heroes.json; sourceTree = "<group>"; };
 		23B609E528D57D3C00E526E6 /* transformations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transformations.json; sourceTree = "<group>"; };
 		23B609E628D57D3C00E526E6 /* noHeroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noHeroes.json; sourceTree = "<group>"; };
+		23E1D29328E13FA2006C7AC0 /* DBZ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBZ.xcdatamodel; sourceTree = "<group>"; };
+		23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataClass.swift"; sourceTree = "<group>"; };
+		23E1D29628E141C3006C7AC0 /* CDHero+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 		236BD50D28CE9C1A00687773 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				23E1D29128E13F5C006C7AC0 /* CoreData */,
 				23B190AF28D020CE00CA88BD /* LocalDataModel.swift */,
 				235A9BAC28CFA2AF0055BCA5 /* NetworkModel.swift */,
 				235A9BA828CF92E20055BCA5 /* HeroModel.swift */,
@@ -222,6 +229,16 @@
 				235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		23E1D29128E13F5C006C7AC0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */,
+				23E1D29628E141C3006C7AC0 /* CDHero+CoreDataProperties.swift */,
+				23E1D29228E13FA2006C7AC0 /* DBZ.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,14 +363,17 @@
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,
+				23E1D29728E141C3006C7AC0 /* CDHero+CoreDataClass.swift in Sources */,
 				237C1F8A28D156710011ED29 /* CustomTabBarController.swift in Sources */,
 				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
+				23E1D29428E13FA2006C7AC0 /* DBZ.xcdatamodeld in Sources */,
 				235A9BA928CF92E20055BCA5 /* HeroModel.swift in Sources */,
 				237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */,
 				235A9BAB28CF956B0055BCA5 /* UIImageViewExtension.swift in Sources */,
 				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
+				23E1D29828E141C3006C7AC0 /* CDHero+CoreDataProperties.swift in Sources */,
 				237C1F8D28D156A90011ED29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,6 +666,19 @@
 			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		23E1D29228E13FA2006C7AC0 /* DBZ.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				23E1D29328E13FA2006C7AC0 /* DBZ.xcdatamodel */,
+			);
+			currentVersion = 23E1D29328E13FA2006C7AC0 /* DBZ.xcdatamodel */;
+			path = DBZ.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 230E883B28C04295007155BA /* Project object */;
 }

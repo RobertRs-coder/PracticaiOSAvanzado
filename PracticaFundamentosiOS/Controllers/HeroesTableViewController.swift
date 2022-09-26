@@ -63,18 +63,6 @@ final class HeroesTableViewController: UITableViewController {
         }
         
         viewModel.viewDidLoad()
-//        guard let token = KeychainSwift().get("KCToken") else { return }
-//        //Network call
-//        let networkModel =  NetworkModel(token: token)
-//
-//        networkModel.getHeroes { [weak self] heroes, _ in
-//
-//            self?.content = heroes
-//
-//            DispatchQueue.main.async {
-//                self?.tableView.reloadData()
-//            }
-//        }
     }
     //Insert Cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
