@@ -31,6 +31,7 @@
 		237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */; };
 		237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */; };
 		237C1F9428D160B50011ED29 /* TransformationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */; };
+		238E0DA328E1C6570065AA65 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E0DA228E1C6570065AA65 /* CoreDataManager.swift */; };
 		23957CB428D422F30049F1B5 /* LocalDataModelTets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 		23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */; };
@@ -80,6 +81,7 @@
 		237C1F8F28D15CCE0011ED29 /* TransformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationModel.swift; sourceTree = "<group>"; };
 		237C1F9128D160B50011ED29 /* TransformationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationsTableViewController.swift; sourceTree = "<group>"; };
 		237C1F9228D160B50011ED29 /* TransformationsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationsTableViewController.xib; sourceTree = "<group>"; };
+		238E0DA228E1C6570065AA65 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		23957CB328D422F30049F1B5 /* LocalDataModelTets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModelTets.swift; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 		23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		23E1D29128E13F5C006C7AC0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				238E0DA228E1C6570065AA65 /* CoreDataManager.swift */,
 				23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */,
 				23E1D29628E141C3006C7AC0 /* CDHero+CoreDataProperties.swift */,
 				23E1D29228E13FA2006C7AC0 /* DBZ.xcdatamodeld */,
@@ -360,6 +363,7 @@
 				234AB70328CEA76B00562E81 /* TableViewCell.swift in Sources */,
 				236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */,
 				23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */,
+				238E0DA328E1C6570065AA65 /* CoreDataManager.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,

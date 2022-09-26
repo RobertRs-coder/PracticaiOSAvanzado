@@ -11,6 +11,7 @@ import KeychainSwift
 final class HeroesTableViewModel {
     private let networkModel: NetworkModel
     private var keychain: KeychainSwift
+    private var coreDataManager: CoreDataManager
     
     private(set) var content: [Hero] = []
     
@@ -19,22 +20,41 @@ final class HeroesTableViewModel {
     
     init(networkModel: NetworkModel = NetworkModel(),
          keychain: KeychainSwift = KeychainSwift(),
+         coreDataManager: CoreDataManager = .shared,
          onError: ((String) -> Void)? = nil,
          onSuccess: (() -> Void)? = nil) {
         self.networkModel = networkModel
         self.keychain = keychain
+        self.coreDataManager = coreDataManager
         self.onError = onError
         self.onSuccess = onSuccess
     }
     
     func viewDidLoad() {
-        guard let token = keychain.get("KCToken") else { return }
-        networkModel.token = token
+        let cdHeroes = coreDataManager.fecthHeroes()
         
-        networkModel.getHeroes { [weak self] heroes, _ in
-            self?.content = heroes
-            self?.onSuccess?()
+        guard !cdHeroes.isEmpty else {
+            print("Heroes from networkCall")
+            guard let token = keychain.get("KCToken") else { return }
+            networkModel.token = token
+            
+            networkModel.getHeroes { [weak self] heroes, _ in
+                self?.content = heroes
+                self?.save(heroes: heroes)
+                self?.onSuccess?()
+            }
+            return
         }
+        print("Heroes from coreData")
+        content = cdHeroes.map { $0.hero }
+        onSuccess?()
+    }
+}
+
+private extension HeroesTableViewModel {
+    func save (heroes: [Hero]) {
+        _ = heroes.map { CDHero.create(from: $0, context: coreDataManager.context) }
+        coreDataManager.saveContext()
     }
 }
 
