@@ -12,8 +12,17 @@ private enum Constant {
     static let tokenKey = "KCToken"
 }
 
-class LocalDataModel {
+final class LocalDataModel {
+    
     private static let userDefaults = UserDefaults.standard
+    
+    static func getSyncDate() -> Date? {
+        userDefaults.object(forKey: "KCLastSyncDate") as? Date
+    }
+    
+    static func saveSyncDate() {
+        userDefaults.set(Date(), forKey: "KCLastSyncDate")
+    }
     
     static func getToken() -> String? {
         userDefaults.string(forKey: Constant.tokenKey)

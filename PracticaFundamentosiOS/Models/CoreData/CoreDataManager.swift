@@ -36,6 +36,25 @@ final class CoreDataManager {
         return []
     }
     
+    func fetchTransformation(for heroId: String) -> [CDTransformation] {
+        let request = CDTransformation.createFetchRequest()
+        let predicate = NSPredicate(format:"hero.id == %@", heroId)
+        request.predicate = predicate
+        let sort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
+        
+        request.sortDescriptors = [sort]
+        
+        
+        do {
+            let result = try context.fetch(request)
+            return result
+        } catch {
+            print("Error getting heroes")
+        }
+        
+        return []
+    }
+    
     var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }

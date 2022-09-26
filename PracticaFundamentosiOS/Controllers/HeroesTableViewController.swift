@@ -39,7 +39,10 @@ final class HeroesTableViewModel {
     func loadHeroes() {
         let cdHeroes = coreDataManager.fecthHeroes()
         
-        guard !cdHeroes.isEmpty else {
+        //Check date of the coreData
+        guard let date = LocalDataModel.getSyncDate(),
+            date.addingTimeInterval(84600) > Date(),
+              !cdHeroes.isEmpty else {
             print("Heroes from networkCall")
             guard let token = keychain.get("KCToken") else { return }
             networkModel.token = token
@@ -47,6 +50,7 @@ final class HeroesTableViewModel {
             networkModel.getHeroes { [weak self] heroes, _ in
                 self?.content = heroes
                 self?.onSuccess?()
+                LocalDataModel.saveSyncDate()
                 self?.save(heroes: heroes)
             }
             return
