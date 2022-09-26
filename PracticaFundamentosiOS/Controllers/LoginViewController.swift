@@ -82,7 +82,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     //MARK: Constants
     let viewModel = LoginViewModel()
     
@@ -125,9 +124,7 @@ final class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         loginButton.alpha = 0
     }
-    
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if KeychainSwift().get("KCToken") == nil {

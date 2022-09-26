@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SettingsViewController: UIViewController {
 
@@ -16,7 +17,9 @@ class SettingsViewController: UIViewController {
 
     @IBAction func onLogOutPressed(_ sender: UIButton) {
     
-        LocalDataModel.deleteToken()
+//        LocalDataModel.deleteToken()
+        
+        KeychainSwift().delete("KCToken")
         
         let loginViewController = LoginViewController ()
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)

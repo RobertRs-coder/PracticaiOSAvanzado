@@ -35,6 +35,7 @@ class HeroesTableViewController: UITableViewController {
                 self?.tableView.reloadData()
             }
         }
+//        KeychainSwift().delete("KCToken")
     }
     
     //Insert Cell
