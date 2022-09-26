@@ -31,7 +31,7 @@ extension CDHero {
     var hero: Hero {
         Hero(id: self.id,
              name: self.name,
-             description: self.description,
+             description: self.heroDescription,
              photo: self.photoUrl,
              favorite: self.favorite)
     }

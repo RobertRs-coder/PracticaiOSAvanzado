@@ -31,6 +31,12 @@ final class HeroesTableViewModel {
     }
     
     func viewDidLoad() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.loadHeroes()
+        }
+    }
+    
+    func loadHeroes() {
         let cdHeroes = coreDataManager.fecthHeroes()
         
         guard !cdHeroes.isEmpty else {
@@ -40,8 +46,8 @@ final class HeroesTableViewModel {
             
             networkModel.getHeroes { [weak self] heroes, _ in
                 self?.content = heroes
-                self?.save(heroes: heroes)
                 self?.onSuccess?()
+                self?.save(heroes: heroes)
             }
             return
         }
