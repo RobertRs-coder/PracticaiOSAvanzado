@@ -17,10 +17,12 @@ public class CDTransformation: NSManagedObject {
 extension CDTransformation {
     static func create(from transformation: Transformation, for hero: CDHero, context: NSManagedObjectContext) -> CDTransformation {
         let cdTransformation = CDTransformation(context: context)
+        
         cdTransformation.id = transformation.id
         cdTransformation.name = transformation.name
         cdTransformation.transformationDescription = transformation.description
         cdTransformation.photoUrl = transformation.photo
+        cdTransformation.hero = hero
         
         return cdTransformation
     }

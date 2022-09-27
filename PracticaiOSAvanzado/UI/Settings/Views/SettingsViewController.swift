@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
 //        LocalDataModel.deleteToken()
         
         KeychainSwift().delete("KCToken")
+//        CoreDataManager().deleteAll()
         
         let loginViewController = LoginViewController ()
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)

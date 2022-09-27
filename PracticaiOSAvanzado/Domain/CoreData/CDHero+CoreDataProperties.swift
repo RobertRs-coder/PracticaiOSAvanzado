@@ -1,8 +1,8 @@
 //
 //  CDHero+CoreDataProperties.swift
-//  PracticaFundamentosiOS
+//  PracticaiOSAvanzado
 //
-//  Created by Roberto Rojo Sahuquillo on 26/9/22.
+//  Created by Roberto Rojo Sahuquillo on 27/9/22.
 //
 //
 

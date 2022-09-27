@@ -19,7 +19,8 @@ enum NetworkError: Error, Equatable {
 }
 
 class NetworkModel {
-    let server = "https://vapor2022.herokuapp.com/api"
+//    let server = "https://vapor2022.herokuapp.com/api"
+    let server = "https://dragonball.keepcoding.education/api"
     let session: URLSession
     var token: String?
     
