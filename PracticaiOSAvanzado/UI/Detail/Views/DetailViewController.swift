@@ -6,18 +6,11 @@
 //
 
 import UIKit
-import KeychainSwift
-
-//private enum DragonBall {
-//    static var character = ""
-//}
 
 enum DragonBall {
     case hero
     case transformation
 }
-
-
 
 protocol DetailViewDisplayable {
   var photo: URL { get }
@@ -26,7 +19,7 @@ protocol DetailViewDisplayable {
   var description: String { get }
 }
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
@@ -37,10 +30,11 @@ class DetailViewController: UIViewController {
     //MARK: Variables
     private var hero: Hero?
     private var transformation: Transformation?
-    
-    private var transformations: [Transformation] = []
-    
+    //init enum
     var character: DragonBall = DragonBall.hero
+    
+    //MARK: Constants
+    let viewModel = DetailViewModel()
     
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -56,19 +50,15 @@ class DetailViewController: UIViewController {
                 self.nameLabel.text = hero.name
                 self.descriptionTextView.text = hero.description
                 self.imageView.setImage(url: hero.photo)
-                
-                let cdTransformations = CoreDataManager.shared.fetchTransformations(for: hero.id)
-                
-                print("Transformations from CD")
-                transformations = cdTransformations.map { $0.transformation }
-                    .sorted {
-                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                viewModel.hero = hero
+            
+                viewModel.onSuccess = { [weak self] in
+                    DispatchQueue.main.async {
+                        let transformationsCount = self?.viewModel.content?.count
+                        self?.transformationsButton.isHidden = transformationsCount == 0
                     }
-    //            let transformationsCount = transformations?.count
-                DispatchQueue.main.async {
-                    let transformationsCount = self.transformations.count
-                    self.transformationsButton.isHidden = transformationsCount == 0
                 }
+                viewModel.viewDidLoad()
                                     
             case .transformation:
                 guard let transformation = transformation else { return }
@@ -91,12 +81,12 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func onTransformationTap(_ sender: UIButton) {
-//        guard let transformations = content else {
-//            return
-//        }
+        guard let transformations = viewModel.content else {
+            return
+        }
         //Now that we have the transformations at this point, we could pass the transformations array here
         let nextVC = TransformationsTableViewController()
-        nextVC.set(model: self.transformations)
+        nextVC.set(model: transformations)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
