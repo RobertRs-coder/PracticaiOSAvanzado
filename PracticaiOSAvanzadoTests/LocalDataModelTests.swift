@@ -1,5 +1,5 @@
 //
-//  LocalDataModelTets.swift
+//  LocalDataModelTests.swift
 //  PracticaFundamentosiOSTests
 //
 //  Created by Roberto Rojo Sahuquillo on 16/9/22.
@@ -9,7 +9,7 @@ import XCTest
 
 @testable import PracticaiOSAvanzado
 
-final class LocalDataModelTets: XCTestCase {
+final class LocalDataModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
