@@ -8,6 +8,18 @@
 import UIKit
 import KeychainSwift
 
+
+
+final class DetailViewModel {
+    private let networkModel: NetworkModel
+    private var keychain: KeychainSwift
+    private var coreDataManager: CoreDataManager
+    
+    func viewDidLoad() {
+        //
+    }
+}
+
 private enum DragonBall {
     static var character = ""
 }
@@ -39,8 +51,10 @@ class DetailViewController: UIViewController {
     
         self.transformationsButton.isHidden = true
         
-        if DragonBall.character == "hero" {
+        
+        switch DragonBall.character {
             
+        case "hero":
             guard let hero = hero else { return }
             
             self.nameLabel.text = hero.name
@@ -61,12 +75,44 @@ class DetailViewController: UIViewController {
                                         $0.name.localizedStandardCompare($1.name) == .orderedAscending
                                     }
             }
-        } else {
+        case "transformation":
             guard let transformation = transformation else { return }
             self.nameLabel.text = transformation.name
             self.descriptionTextView.text = transformation.description
             self.imageView.setImage(url: transformation.photo)
+            
+        default:
+            break
         }
+        
+//        if DragonBall.character == "hero" {
+//
+//            guard let hero = hero else { return }
+//
+//            self.nameLabel.text = hero.name
+//            self.descriptionTextView.text = hero.description
+//            self.imageView.setImage(url: hero.photo)
+//
+//            guard let token = KeychainSwift().get("KCToken") else { return }
+//
+//            let networkModel = NetworkModel(token: token)
+//
+//            networkModel.getTransformations(id: hero.id) { [weak self] transformations, error in
+//                DispatchQueue.main.sync {
+//                                        self?.transformations = transformations
+//                    let transformationsCount = self?.transformations?.count
+//                                        self?.transformationsButton.isHidden = transformationsCount == 0
+//                                    }
+//                self?.transformations = self?.transformations?.sorted {
+//                                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
+//                                    }
+//            }
+//        } else {
+//            guard let transformation = transformation else { return }
+//            self.nameLabel.text = transformation.name
+//            self.descriptionTextView.text = transformation.description
+//            self.imageView.setImage(url: transformation.photo)
+//        }
         
     }
     
