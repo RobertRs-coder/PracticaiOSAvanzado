@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import PracticaFundamentosiOS
+@testable import PracticaiOSAvanzado
 
 final class LocalDataModelTets: XCTestCase {
     

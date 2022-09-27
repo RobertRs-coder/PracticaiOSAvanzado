@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import PracticaFundamentosiOS
+@testable import PracticaiOSAvanzado
 
 enum ErrorMock: Error {
     case mockCase
@@ -121,7 +121,7 @@ final class NetworkModelTests: XCTestCase {
         
         //Given
         sut.token = "TokenString"
-        urlSessionMock.data = getHeroesData()
+        urlSessionMock.data = getHeroesData(resourceName: "heroes")
         urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
 
         //When
@@ -135,6 +135,28 @@ final class NetworkModelTests: XCTestCase {
         XCTAssertTrue(retrievedHeroes?.count ?? 0 > 0, "Should have received heroes")
         XCTAssertNil(error, "Should no be an error")
         }
+    
+    
+    func testGetHerosSuccessWithNoHeroes() {
+        var error: NetworkError?
+        var retrievedHeroes: [Hero]?
+        
+        //Given
+        sut.token = "testToken"
+        urlSessionMock.data = getHeroesData(resourceName: "noHeroes")
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        //When
+        sut.getHeroes { heroes, networkError in
+            error = networkError
+            retrievedHeroes = heroes
+        }
+        
+        //Then
+        XCTAssertNotNil(retrievedHeroes)
+        XCTAssertEqual(retrievedHeroes?.count, 0)
+        XCTAssertNil(error, "there should be no error")
+    }
 
     func testGetTransformationsSuccess() {
         
@@ -143,11 +165,11 @@ final class NetworkModelTests: XCTestCase {
         
         //Given
         sut.token = "TokenString"
-        urlSessionMock.data = getTransformationsData()
+        urlSessionMock.data = getTransformationsData(resourceName: "transformations")
         urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
         
         //When
-        sut.getTransformations(id: "") { transformations, networkError in
+        sut.getTransformations(id: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94") { transformations, networkError in
             retrievedTransformations = transformations
             error = networkError
             
@@ -157,24 +179,45 @@ final class NetworkModelTests: XCTestCase {
             XCTAssertTrue(retrievedTransformations?.count ?? 0 > 0, "Should have received transformations")
             XCTAssertNil(error, "Should no be an error")
         }
+    
+    func testGetTransformationsSuccessWithNoTransformations() {
+        var error: NetworkError?
+        var retrievedTransformations: [Transformation]?
+        
+        //Given
+        sut.token = "testToken"
+        urlSessionMock.data = getTransformationsData(resourceName: "noTransformations")
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        //When
+        sut.getTransformations(id: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94") { transformations, networkError in
+            error = networkError
+            retrievedTransformations = transformations
+        }
+        
+        //Then
+        XCTAssertNotNil(retrievedTransformations)
+        XCTAssertEqual(retrievedTransformations?.count, 0)
+        XCTAssertNil(error, "there should be no error")
+    }
 }
 
 extension NetworkModelTests {
     
-    func getHeroesData() -> Data? {
+    func getHeroesData(resourceName: String) -> Data? {
         
         let bundle = Bundle(for: NetworkModelTests.self)
         
-        guard let path = bundle.path(forResource: "heroes", ofType: "json") else { return nil}
+        guard let path = bundle.path(forResource: resourceName, ofType: "json") else { return nil}
         
         return try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
     }
     
-    func getTransformationsData() -> Data? {
+    func getTransformationsData(resourceName: String) -> Data? {
         
         let bundle = Bundle(for: NetworkModelTests.self)
         
-        guard let path = bundle.path(forResource: "transformations", ofType: "json") else { return nil}
+        guard let path = bundle.path(forResource: resourceName, ofType: "json") else { return nil}
         
         return try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
     }
