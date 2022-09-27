@@ -37,7 +37,7 @@ final class HeroesTableViewModel {
     }
     
     func loadHeroes() {
-        let cdHeroes = coreDataManager.fecthHeroes()
+        let cdHeroes = coreDataManager.fetchHeroes()
         
         //Check date of the coreData
         guard let date = LocalDataModel.getSyncDate(),
@@ -63,7 +63,7 @@ final class HeroesTableViewModel {
                     }
                     group.notify(queue: DispatchQueue.global()) {
                         LocalDataModel.saveSyncDate()
-                        if let cdHeroes = self?.coreDataManager.fecthHeroes() {
+                        if let cdHeroes = self?.coreDataManager.fetchHeroes() {
                             self?.content = cdHeroes.map { $0.hero }
                         }
                         self?.onSuccess?()
@@ -75,11 +75,12 @@ final class HeroesTableViewModel {
         
         print("Heroes from Core Data")
         content = cdHeroes.map { $0.hero }
+        print(content)
         onSuccess?()
     }
     
     func downloadTransformations(for hero: Hero, completion: @escaping () -> Void) {
-        let cdTransformations = coreDataManager.fetchTransformation(for: hero.id)
+        let cdTransformations = CoreDataManager.shared.fetchTransformations(for: hero.id)
         if cdTransformations.isEmpty {
             print("Tranformtaions Network Call")
             guard let token = keychain.get("KCToken") else {

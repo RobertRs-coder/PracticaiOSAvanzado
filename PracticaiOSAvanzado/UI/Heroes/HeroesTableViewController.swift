@@ -46,8 +46,7 @@ final class HeroesTableViewController: UITableViewController {
 
     //Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextViewController = DetailViewController ()
-  
+        let nextViewController = DetailViewController()
         nextViewController.setHero(model: viewModel.content[indexPath.row])
         
         navigationController?.pushViewController(nextViewController, animated: true)

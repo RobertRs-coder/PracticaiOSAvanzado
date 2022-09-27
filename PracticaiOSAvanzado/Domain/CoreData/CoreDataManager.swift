@@ -23,7 +23,15 @@ final class CoreDataManager {
     
     static let shared = CoreDataManager()
     
-    func fecthHeroes() -> [CDHero] {
+    var context: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
+    
+    func saveContext() {
+        context.saveContext()
+    }
+    
+    func fetchHeroes() -> [CDHero] {
         let request = CDHero.createFetchRequest()
         
         do {
@@ -51,40 +59,30 @@ final class CoreDataManager {
         
         return nil
     }
-    
-    
-    
-    func fetchTransformation(for heroId: String) -> [CDTransformation] {
-        let request = CDTransformation.createFetchRequest()
-        let predicate = NSPredicate(format:"hero.id == %@", heroId)
-        request.predicate = predicate
+
+    func fetchTransformations(for heroId: String) -> [CDTransformation] {
+        let fetchRequest = CDTransformation.createFetchRequest()
+        let predicate = NSPredicate(format: "hero.id == %@", heroId)
         let sort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
-        
-        request.sortDescriptors = [sort]
-        
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = predicate
         
         do {
-            let result = try context.fetch(request)
+            let result = try context.fetch(fetchRequest)
             return result
         } catch {
-            print("Error getting heroes")
+            print("El error obteniendo Transformations \(error)")
         }
-        
         return []
     }
     
-    var context: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
-    
-    func saveContext() {
-        context.saveContext()
-    }
-    
     func deleteAll() {
-        //Delete objects
+        let cdHeros = fetchHeroes()
+        cdHeros.forEach { context.delete($0)}
         saveContext()
     }
+    
+    
 }
 
 extension NSManagedObjectContext {

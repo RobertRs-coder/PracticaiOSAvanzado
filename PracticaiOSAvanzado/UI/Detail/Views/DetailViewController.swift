@@ -8,18 +8,6 @@
 import UIKit
 import KeychainSwift
 
-
-
-final class DetailViewModel {
-    private let networkModel: NetworkModel
-    private var keychain: KeychainSwift
-    private var coreDataManager: CoreDataManager
-    
-    func viewDidLoad() {
-        //
-    }
-}
-
 private enum DragonBall {
     static var character = ""
 }
@@ -43,7 +31,7 @@ class DetailViewController: UIViewController {
     private var hero: Hero?
     private var transformation: Transformation?
     
-    private var transformations: [Transformation]? = []
+    private var transformations: [Transformation] = []
     
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -56,25 +44,24 @@ class DetailViewController: UIViewController {
             
         case "hero":
             guard let hero = hero else { return }
-            
+
             self.nameLabel.text = hero.name
             self.descriptionTextView.text = hero.description
             self.imageView.setImage(url: hero.photo)
             
-            guard let token = KeychainSwift().get("KCToken") else { return }
+            let cdTransformations = CoreDataManager.shared.fetchTransformations(for: hero.id)
             
-            let networkModel = NetworkModel(token: token)
-            
-            networkModel.getTransformations(id: hero.id) { [weak self] transformations, error in
-                DispatchQueue.main.sync {
-                                        self?.transformations = transformations
-                    let transformationsCount = self?.transformations?.count
-                                        self?.transformationsButton.isHidden = transformationsCount == 0
-                                    }
-                self?.transformations = self?.transformations?.sorted {
-                                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
-                                    }
+            print("Transformations from CD")
+            transformations = cdTransformations.map { $0.transformation }
+                .sorted {
+                    $0.name.localizedStandardCompare($1.name) == .orderedAscending
+                }
+//            let transformationsCount = transformations?.count
+            DispatchQueue.main.async {
+                let transformationsCount = self.transformations.count
+                self.transformationsButton.isHidden = transformationsCount == 0
             }
+                                
         case "transformation":
             guard let transformation = transformation else { return }
             self.nameLabel.text = transformation.name
@@ -84,36 +71,6 @@ class DetailViewController: UIViewController {
         default:
             break
         }
-        
-//        if DragonBall.character == "hero" {
-//
-//            guard let hero = hero else { return }
-//
-//            self.nameLabel.text = hero.name
-//            self.descriptionTextView.text = hero.description
-//            self.imageView.setImage(url: hero.photo)
-//
-//            guard let token = KeychainSwift().get("KCToken") else { return }
-//
-//            let networkModel = NetworkModel(token: token)
-//
-//            networkModel.getTransformations(id: hero.id) { [weak self] transformations, error in
-//                DispatchQueue.main.sync {
-//                                        self?.transformations = transformations
-//                    let transformationsCount = self?.transformations?.count
-//                                        self?.transformationsButton.isHidden = transformationsCount == 0
-//                                    }
-//                self?.transformations = self?.transformations?.sorted {
-//                                        $0.name.localizedStandardCompare($1.name) == .orderedAscending
-//                                    }
-//            }
-//        } else {
-//            guard let transformation = transformation else { return }
-//            self.nameLabel.text = transformation.name
-//            self.descriptionTextView.text = transformation.description
-//            self.imageView.setImage(url: transformation.photo)
-//        }
-        
     }
     
     func setHero(model: DetailViewDisplayable) {
@@ -129,12 +86,12 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func onTransformationTap(_ sender: UIButton) {
-        guard let transformations = transformations else {
-            return
-        }
+//        guard let transformations = content else {
+//            return
+//        }
         //Now that we have the transformations at this point, we could pass the transformations array here
         let nextVC = TransformationsTableViewController()
-        nextVC.set(model: transformations)
+        nextVC.set(model: self.transformations)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
