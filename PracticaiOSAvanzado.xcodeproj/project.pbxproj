@@ -152,8 +152,6 @@
 			children = (
 				230E09C128E27B0B004AE494 /* Models */,
 				230E09C228E27B13004AE494 /* Views */,
-				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
-				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
 				230E09C328E27B19004AE494 /* ViewModels */,
 			);
 			path = Heroes;
@@ -215,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				234AB70528CEA77300562E81 /* TableViewCell */,
+				236BD51628CEA3AD00687773 /* HeroesTableViewController.swift */,
+				236BD51728CEA3AD00687773 /* HeroesTableViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
