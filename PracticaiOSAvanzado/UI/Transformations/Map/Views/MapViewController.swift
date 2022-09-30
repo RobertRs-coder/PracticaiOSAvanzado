@@ -6,24 +6,49 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
-
+    //MARK: IBOutlets
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    //MARK: Constants
+    let viewModel = MapViewModel()
+    
+    //MARK: Cycle of life
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        viewModel.onError = { message in
+            print(message)
+        }
+        
+        viewModel.onSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                //
+            }
+        }
+        
+        viewModel.vieWDidLoad()
     }
+    
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupMap()
+        viewModel.getHeroesAnnotations { arrayAnnotations in
+            mapView.addAnnotations(arrayAnnotations)
+    
+        }
     }
-    */
+    
+    
+    func setupMap() {
+        mapView.showsUserLocation = true
+        mapView.centerToLocation(location: CLLocation(latitude: 21.282, longitude: -157.82944))
+    }
 
 }

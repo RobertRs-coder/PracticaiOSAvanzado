@@ -27,6 +27,7 @@
 		23612A4628E6549600BBAB70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23612A4428E6549600BBAB70 /* MapViewController.swift */; };
 		23612A4728E6549600BBAB70 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23612A4528E6549600BBAB70 /* MapViewController.xib */; };
 		23612A4928E654A400BBAB70 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23612A4828E654A300BBAB70 /* MapViewModel.swift */; };
+		23612A4B28E659D400BBAB70 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23612A4A28E659D400BBAB70 /* MapViewExtension.swift */; };
 		2364F6E428D4CF160077D7A1 /* NetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */; };
 		2367914728E3742800036716 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2367914628E3742800036716 /* LoginViewModelTests.swift */; };
 		236BD51428CE9C7400687773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236BD51228CE9C7400687773 /* LoginViewController.swift */; };
@@ -42,7 +43,6 @@
 		238E0DA328E1C6570065AA65 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E0DA228E1C6570065AA65 /* CoreDataManager.swift */; };
 		238E0DA628E1DA1A0065AA65 /* CDTransformation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E0DA428E1DA1A0065AA65 /* CDTransformation+CoreDataClass.swift */; };
 		238E0DA728E1DA1A0065AA65 /* CDTransformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E0DA528E1DA1A0065AA65 /* CDTransformation+CoreDataProperties.swift */; };
-		238E0DAB28E1DA870065AA65 /* CDHero+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E0DAA28E1DA870065AA65 /* CDHero+CoreDataProperties.swift */; };
 		23957CB428D422F30049F1B5 /* LocalDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23957CB328D422F30049F1B5 /* LocalDataModelTests.swift */; };
 		23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B190AF28D020CE00CA88BD /* LocalDataModel.swift */; };
 		23B609D928D55A0300E526E6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */; };
@@ -51,7 +51,8 @@
 		23B609E928D57D3C00E526E6 /* transformations.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E528D57D3C00E526E6 /* transformations.json */; };
 		23B609EA28D57D3C00E526E6 /* noHeroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B609E628D57D3C00E526E6 /* noHeroes.json */; };
 		23E1D29428E13FA2006C7AC0 /* DBZ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E1D29228E13FA2006C7AC0 /* DBZ.xcdatamodeld */; };
-		23E1D29728E141C3006C7AC0 /* CDHero+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */; };
+		23F5632928E66D7700572840 /* CDHero+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5632728E66D7700572840 /* CDHero+CoreDataClass.swift */; };
+		23F5632A28E66D7700572840 /* CDHero+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F5632828E66D7700572840 /* CDHero+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		23612A4428E6549600BBAB70 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		23612A4528E6549600BBAB70 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		23612A4828E654A300BBAB70 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		23612A4A28E659D400BBAB70 /* MapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
 		2364F6E328D4CF160077D7A1 /* NetworkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelTests.swift; sourceTree = "<group>"; };
 		2367914628E3742800036716 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		236BD51228CE9C7400687773 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 		238E0DA228E1C6570065AA65 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		238E0DA428E1DA1A0065AA65 /* CDTransformation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTransformation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		238E0DA528E1DA1A0065AA65 /* CDTransformation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTransformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		238E0DAA28E1DA870065AA65 /* CDHero+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		23957CB328D422F30049F1B5 /* LocalDataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModelTests.swift; sourceTree = "<group>"; };
 		23B190AF28D020CE00CA88BD /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 		23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -111,7 +112,8 @@
 		23B609E528D57D3C00E526E6 /* transformations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transformations.json; sourceTree = "<group>"; };
 		23B609E628D57D3C00E526E6 /* noHeroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noHeroes.json; sourceTree = "<group>"; };
 		23E1D29328E13FA2006C7AC0 /* DBZ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBZ.xcdatamodel; sourceTree = "<group>"; };
-		23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataClass.swift"; sourceTree = "<group>"; };
+		23F5632728E66D7700572840 /* CDHero+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataClass.swift"; sourceTree = "<group>"; };
+		23F5632828E66D7700572840 /* CDHero+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDHero+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,8 +365,8 @@
 		23612A4028E6544800BBAB70 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				23612A4428E6549600BBAB70 /* MapViewController.swift */,
 				23612A4528E6549600BBAB70 /* MapViewController.xib */,
+				23612A4428E6549600BBAB70 /* MapViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,6 +419,7 @@
 			children = (
 				23B609D828D55A0300E526E6 /* UIViewControllerExtension.swift */,
 				235A9BAA28CF956B0055BCA5 /* UIImageViewExtension.swift */,
+				23612A4A28E659D400BBAB70 /* MapViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,8 +427,8 @@
 		23E1D29128E13F5C006C7AC0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				23E1D29528E141C3006C7AC0 /* CDHero+CoreDataClass.swift */,
-				238E0DAA28E1DA870065AA65 /* CDHero+CoreDataProperties.swift */,
+				23F5632728E66D7700572840 /* CDHero+CoreDataClass.swift */,
+				23F5632828E66D7700572840 /* CDHero+CoreDataProperties.swift */,
 				238E0DA428E1DA1A0065AA65 /* CDTransformation+CoreDataClass.swift */,
 				238E0DA528E1DA1A0065AA65 /* CDTransformation+CoreDataProperties.swift */,
 				238E0DA228E1C6570065AA65 /* CoreDataManager.swift */,
@@ -562,8 +565,8 @@
 				230E09CE28E27C89004AE494 /* DetailViewModel.swift in Sources */,
 				230E884728C04295007155BA /* AppDelegate.swift in Sources */,
 				23B190B028D020CE00CA88BD /* LocalDataModel.swift in Sources */,
+				23F5632928E66D7700572840 /* CDHero+CoreDataClass.swift in Sources */,
 				235A9BAD28CFA2AF0055BCA5 /* NetworkModel.swift in Sources */,
-				23E1D29728E141C3006C7AC0 /* CDHero+CoreDataClass.swift in Sources */,
 				237C1F8A28D156710011ED29 /* CustomTabBarController.swift in Sources */,
 				23532BFC28CEB9AE00C23C60 /* DetailViewController.swift in Sources */,
 				23E1D29428E13FA2006C7AC0 /* DBZ.xcdatamodeld in Sources */,
@@ -571,9 +574,10 @@
 				237C1F9328D160B50011ED29 /* TransformationsTableViewController.swift in Sources */,
 				230E884928C04295007155BA /* SceneDelegate.swift in Sources */,
 				23612A4628E6549600BBAB70 /* MapViewController.swift in Sources */,
-				238E0DAB28E1DA870065AA65 /* CDHero+CoreDataProperties.swift in Sources */,
 				230E09C828E27C01004AE494 /* HeroesTableViewModel.swift in Sources */,
 				237C1F9028D15CCE0011ED29 /* TransformationModel.swift in Sources */,
+				23F5632A28E66D7700572840 /* CDHero+CoreDataProperties.swift in Sources */,
+				23612A4B28E659D400BBAB70 /* MapViewExtension.swift in Sources */,
 				235A9BAB28CF956B0055BCA5 /* UIImageViewExtension.swift in Sources */,
 				236BD51828CEA3AD00687773 /* HeroesTableViewController.swift in Sources */,
 				237C1F8D28D156A90011ED29 /* SettingsViewController.swift in Sources */,
