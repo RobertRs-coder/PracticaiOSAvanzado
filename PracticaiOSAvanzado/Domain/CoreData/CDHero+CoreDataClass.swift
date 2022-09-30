@@ -1,8 +1,8 @@
 //
 //  CDHero+CoreDataClass.swift
-//  PracticaFundamentosiOS
+//  PracticaiOSAvanzado
 //
-//  Created by Roberto Rojo Sahuquillo on 26/9/22.
+//  Created by Roberto Rojo Sahuquillo on 30/9/22.
 //
 //
 
@@ -24,6 +24,8 @@ extension CDHero {
         cdHero.favorite = hero.favorite
         cdHero.heroDescription = hero.description
         cdHero.photoUrl = hero.photo
+        cdHero.latitud = hero.latitud ?? 0.0
+        cdHero.longitud = hero.longitud ?? 0.0
         
         return cdHero
     }
@@ -33,7 +35,9 @@ extension CDHero {
              name: self.name,
              description: self.heroDescription,
              photo: self.photoUrl,
-             favorite: self.favorite)
+             favorite: self.favorite,
+             latitud: self.latitud,
+             longitud: self.longitud)
     }
     
 }
