@@ -49,13 +49,13 @@ final class HeroesTableViewModel {
             guard let token = keychain.get("KCToken") else { return }
             networkModel.token = token
             
-            networkModel.getHeroes { [weak self] heroesNetwork, error in
+            networkModel.getHeroes { [weak self] heroes, error in
                 if let error = error {
                     self?.onError?("Heroes error\(error.localizedDescription)")
                 }   else {
-                    self?.heroes = heroesNetwork
-                    self?.heroes.forEach { hero in
-                        for (index, hero) in self?.heroes.enumerated() {
+                    // Problem?¿
+                    heroes.forEach { hero in
+                        for (index, hero) in heroes.enumerated() {
                             self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
                                 if coordinateArray.count > 0 {
                                     let coordinate = coordinateArray.first
