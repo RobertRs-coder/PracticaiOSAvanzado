@@ -2,7 +2,7 @@
 //  CDHero+CoreDataProperties.swift
 //  PracticaiOSAvanzado
 //
-//  Created by Roberto Rojo Sahuquillo on 27/9/22.
+//  Created by Roberto Rojo Sahuquillo on 30/9/22.
 //
 //
 
@@ -21,6 +21,8 @@ extension CDHero {
     @NSManaged public var id: String
     @NSManaged public var name: String
     @NSManaged public var photoUrl: URL
+    @NSManaged public var longitud: Double
+    @NSManaged public var latitud: Double
     @NSManaged public var transformations: NSSet?
 
 }

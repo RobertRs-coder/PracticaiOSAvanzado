@@ -124,6 +124,30 @@ class NetworkModel {
             }
         }
     }
+    
+    func getLocationHeroes(id: String, completion: @escaping ([HeroLocation], Error?) -> Void) {
+        let urlString = "\(server)/heros/locations"
+        
+        struct Body: Encodable {
+            let  id: String
+        }
+        
+        guard let token else {
+            fatalError("No token")
+        }
+        
+        performAuthenticatedNetworkRequest(urlString,
+                                           httpMethod: .post,
+                                           httpBody: Body(id: id),
+                                           requestToken: token) { (result: Result<[HeroLocation], NetworkError>)  in
+            switch result {
+            case .success(let success):
+                completion(success, nil)
+            case .failure(let failure):
+                completion([], failure)
+            }
+        }
+    }
 }
 
 enum HTTPMethod: String {

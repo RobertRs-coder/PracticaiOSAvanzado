@@ -15,6 +15,8 @@ final class HeroesTableViewModel {
     
     private(set) var content: [Hero] = []
     
+    var heroes: [Hero] = []
+    
     var onError: ((String) -> Void)?
     var onSuccess: (() -> Void)?
     
@@ -43,15 +45,33 @@ final class HeroesTableViewModel {
         guard let date = LocalDataModel.getSyncDate(),
               date.addingTimeInterval(84600) > Date(),
               !cdHeroes.isEmpty else {
-            print("Heroes from networkCall")
+//            print("Heroes from networkCall")
             guard let token = keychain.get("KCToken") else { return }
             networkModel.token = token
             
-            networkModel.getHeroes { [weak self] heroes, error in
+            networkModel.getHeroes { [weak self] heroesNetwork, error in
                 if let error = error {
                     self?.onError?("Heroes error\(error.localizedDescription)")
                 }   else {
+                    self?.heroes = heroesNetwork
+                    self?.heroes.forEach { hero in
+                        for (index, hero) in self?.heroes.enumerated() {
+                            self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
+                                if coordinateArray.count > 0 {
+                                    let coordinate = coordinateArray.first
+                                    self?.heroes[index].latitud = coordinate?.latitud
+                                    self?.heroes[index].longitud = coordinate?.longitud
+                                }
+                                //notification to finish getCoordinates?
+//                                print(self?.heroes ?? [])
+                            }
+                        }
+                    }
                     self?.save(heroes: heroes)
+                    
+                    heroes.forEach { hero in
+                        print(hero.latitud)
+                    }
                     
                     let group = DispatchGroup()
                     
@@ -80,7 +100,7 @@ final class HeroesTableViewModel {
     }
     
     func downloadTransformations(for hero: Hero, completion: @escaping () -> Void) {
-        let cdTransformations = CoreDataManager.shared.fetchTransformations(for: hero.id)
+        let cdTransformations = coreDataManager.fetchTransformations(for: hero.id)
         if cdTransformations.isEmpty {
             print("Tranformtaions Network Call")
             guard let token = keychain.get("KCToken") else {

@@ -3,4 +3,134 @@
    uuid = "2E9FBD5F-DC4B-4907-8F20-6F40F09E0F7C"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F0280F3-CC2A-46C5-8B38-0C11003A98CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "loadHeroes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B846DC45-7AAD-47DA-AE01-2FCEA9135A03"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "loadHeroes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0EE11DB-9F61-46B1-BAE6-782C2A119A44"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "loadHeroes()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0EE11DB-9F61-46B1-BAE6-782C2A119A44 - f31584b05071c87e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;PracticaiOSAvanzado.Hero&gt;, Swift.Optional&lt;PracticaiOSAvanzado.NetworkError&gt;) -&gt; () in PracticaiOSAvanzado.HeroesTableViewModel.loadHeroes() -&gt; ()"
+                  moduleName = "PracticaiOSAvanzado"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertorojosahuquillo/Desktop/PracticaiOSAvanzado/PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1316">
+               </Location>
+               <Location
+                  uuid = "B0EE11DB-9F61-46B1-BAE6-782C2A119A44 - e9a1a9c735fdb435"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (PracticaiOSAvanzado.Hero) -&gt; () in closure #1 (Swift.Array&lt;PracticaiOSAvanzado.Hero&gt;, Swift.Optional&lt;PracticaiOSAvanzado.NetworkError&gt;) -&gt; () in PracticaiOSAvanzado.HeroesTableViewModel.loadHeroes() -&gt; ()"
+                  moduleName = "PracticaiOSAvanzado"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertorojosahuquillo/Desktop/PracticaiOSAvanzado/PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "647ACBF1-CED3-44D7-800E-4A0B803C15A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "loadHeroes()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "647ACBF1-CED3-44D7-800E-4A0B803C15A9 - c995e5b358b4efe1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PracticaiOSAvanzado.Hero) -&gt; () in closure #1 (Swift.Array&lt;PracticaiOSAvanzado.Hero&gt;, Swift.Optional&lt;PracticaiOSAvanzado.NetworkError&gt;) -&gt; () in PracticaiOSAvanzado.HeroesTableViewModel.loadHeroes() -&gt; ()"
+                  moduleName = "PracticaiOSAvanzado"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertorojosahuquillo/Desktop/PracticaiOSAvanzado/PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "584">
+               </Location>
+               <Location
+                  uuid = "647ACBF1-CED3-44D7-800E-4A0B803C15A9 - d0027adacba10b98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;PracticaiOSAvanzado.HeroLocation&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (PracticaiOSAvanzado.Hero) -&gt; () in closure #1 (Swift.Array&lt;PracticaiOSAvanzado.Hero&gt;, Swift.Optional&lt;PracticaiOSAvanzado.NetworkError&gt;) -&gt; () in PracticaiOSAvanzado.HeroesTableViewModel.loadHeroes() -&gt; ()"
+                  moduleName = "PracticaiOSAvanzado"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertorojosahuquillo/Desktop/PracticaiOSAvanzado/PracticaiOSAvanzado/UI/Heroes/ViewModels/HeroesTableViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
