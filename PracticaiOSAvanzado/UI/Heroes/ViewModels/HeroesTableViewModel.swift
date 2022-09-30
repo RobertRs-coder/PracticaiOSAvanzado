@@ -54,26 +54,33 @@ final class HeroesTableViewModel {
                     self?.onError?("Heroes error\(error.localizedDescription)")
                 }   else {
                     // Problem?¿
-                    heroes.forEach { hero in
-                        for (index, hero) in heroes.enumerated() {
-                            self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
-                                if coordinateArray.count > 0 {
-                                    let coordinate = coordinateArray.first
-                                    self?.heroes[index].latitud = coordinate?.latitud
-                                    self?.heroes[index].longitud = coordinate?.longitud
-                                }
-                                //notification to finish getCoordinates?
-//                                print(self?.heroes ?? [])
+                    let group = DispatchGroup()
+
+                   
+
+                    for (index, hero) in heroes.enumerated() {
+                        group.enter()
+                        self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
+                            if coordinateArray.count > 0 {
+                                let coordinate = coordinateArray.first
+                                self?.heroes[index].latitud = coordinate?.latitud
+                                self?.heroes[index].longitud = coordinate?.longitud
+                                
                             }
+                            group.leave()
+            
+                            //notification to finish getCoordinates?
+//                                print(self?.heroes ?? [])
                         }
                     }
+                    
                     self?.save(heroes: heroes)
                     
                     heroes.forEach { hero in
                         print(hero.latitud)
                     }
                     
-                    let group = DispatchGroup()
+//                    let group = DispatchGroup()
                     
                     heroes.forEach { hero in
                         group.enter()
@@ -136,3 +143,28 @@ private extension HeroesTableViewModel {
         coreDataManager.saveContext()
     }
 }
+
+//
+//func foo(completion: @escaping () -> Void) {
+//     let group = DispatchGroup()
+//     
+//     group.enter()
+//     self.fetchData1() {
+//         // code
+//         group.leave()
+//     }
+//
+//     group.enter()
+//     self.fetchData2() {
+//         // code
+//         group.leave()
+//     }
+//
+//     group.notify(queue: .main) {
+//         DispatchQueue.main.async {
+//          // code
+//          return completion() //yeah... idk why it's written like this
+//         }
+//     }
+//
+//}
