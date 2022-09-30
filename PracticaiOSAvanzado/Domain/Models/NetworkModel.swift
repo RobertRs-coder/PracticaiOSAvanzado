@@ -125,7 +125,7 @@ class NetworkModel {
         }
     }
     
-    func getLocationHeroes(id: String, completion: @escaping ([HeroLocation], Error?) -> Void) {
+    func getLocations(id: String, completion: @escaping ([Location], Error?) -> Void) {
         let urlString = "\(server)/heros/locations"
         
         struct Body: Encodable {
@@ -139,7 +139,7 @@ class NetworkModel {
         performAuthenticatedNetworkRequest(urlString,
                                            httpMethod: .post,
                                            httpBody: Body(id: id),
-                                           requestToken: token) { (result: Result<[HeroLocation], NetworkError>)  in
+                                           requestToken: token) { (result: Result<[Location], NetworkError>)  in
             switch result {
             case .success(let success):
                 completion(success, nil)

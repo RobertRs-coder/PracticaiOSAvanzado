@@ -13,6 +13,4 @@ struct Hero: TableViewDisplayable, DetailViewDisplayable,  Decodable {
     let description: String
     let photo: URL
     let favorite: Bool
-    var latitud: Double?
-    var longitud: Double?
 }

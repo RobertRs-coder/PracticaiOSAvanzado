@@ -76,6 +76,23 @@ final class CoreDataManager {
         return []
     }
     
+    func fetchLocations(for heroId: String) -> [CDLocation] {
+        let fetchRequest = CDLocation.createFetchRequest()
+        let predicate = NSPredicate(format: "hero.id == %@", heroId)
+        let sort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
+        fetchRequest.sortDescriptors = [sort]
+        fetchRequest.predicate = predicate
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            return result
+        } catch {
+            print("El error obteniendo Locations \(error)")
+        }
+        return []
+    }
+
+    
     func deleteAll() {
         let cdHeros = fetchHeroes()
         cdHeros.forEach { context.delete($0)}

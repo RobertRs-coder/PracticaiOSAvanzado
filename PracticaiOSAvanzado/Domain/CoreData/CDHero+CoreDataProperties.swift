@@ -21,9 +21,8 @@ extension CDHero {
     @NSManaged public var id: String
     @NSManaged public var name: String
     @NSManaged public var photoUrl: URL
-    @NSManaged public var longitud: Double
-    @NSManaged public var latitud: Double
     @NSManaged public var transformations: NSSet?
+    @NSManaged public var locations: NSSet?
 
 }
 
@@ -41,6 +40,23 @@ extension CDHero {
 
     @objc(removeTransformations:)
     @NSManaged public func removeFromTransformations(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for locations
+extension CDHero {
+
+    @objc(addLocationsObject:)
+    @NSManaged public func addToLocations(_ value: CDLocation)
+
+    @objc(removeLocationsObject:)
+    @NSManaged public func removeFromLocations(_ value: CDLocation)
+
+    @objc(addLocations:)
+    @NSManaged public func addToLocations(_ values: NSSet)
+
+    @objc(removeLocations:)
+    @NSManaged public func removeFromLocations(_ values: NSSet)
 
 }
 

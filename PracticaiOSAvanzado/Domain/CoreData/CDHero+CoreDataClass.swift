@@ -24,8 +24,6 @@ extension CDHero {
         cdHero.favorite = hero.favorite
         cdHero.heroDescription = hero.description
         cdHero.photoUrl = hero.photo
-        cdHero.latitud = hero.latitud ?? 0.0
-        cdHero.longitud = hero.longitud ?? 0.0
         
         return cdHero
     }
@@ -35,9 +33,7 @@ extension CDHero {
              name: self.name,
              description: self.heroDescription,
              photo: self.photoUrl,
-             favorite: self.favorite,
-             latitud: self.latitud,
-             longitud: self.longitud)
+             favorite: self.favorite)
     }
     
 }

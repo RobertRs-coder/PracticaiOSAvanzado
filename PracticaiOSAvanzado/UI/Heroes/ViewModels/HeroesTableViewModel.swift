@@ -54,33 +54,30 @@ final class HeroesTableViewModel {
                     self?.onError?("Heroes error\(error.localizedDescription)")
                 }   else {
                     // Problem?¿
-                    let group = DispatchGroup()
 
                    
 
-                    for (index, hero) in heroes.enumerated() {
-                        group.enter()
-                        self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
-                            if coordinateArray.count > 0 {
-                                let coordinate = coordinateArray.first
-                                self?.heroes[index].latitud = coordinate?.latitud
-                                self?.heroes[index].longitud = coordinate?.longitud
-                                
-                            }
-                            group.leave()
-            
-                            //notification to finish getCoordinates?
-//                                print(self?.heroes ?? [])
-                        }
-                    }
+//                    for (index, hero) in heroes.enumerated() {
+//                        self?.networkModel.getLocationHeroes(id: hero.id) { [weak self] coordinateArray, error in
+//                            if coordinateArray.count > 0 {
+//                                let coordinate = coordinateArray.first
+//                                self?.heroes[index].latitud = coordinate?.latitud
+//                                self?.heroes[index].longitud = coordinate?.longitud
+//                                
+//                            }
+//            
+//                            //notification to finish getCoordinates?
+////                                print(self?.heroes ?? [])
+//                        }
+//                    }
                     
                     self?.save(heroes: heroes)
+    
                     
-                    heroes.forEach { hero in
-                        print(hero.latitud)
-                    }
+                    let group = DispatchGroup()
                     
-//                    let group = DispatchGroup()
+                    
+                    
                     
                     heroes.forEach { hero in
                         group.enter()
@@ -128,6 +125,29 @@ final class HeroesTableViewModel {
             completion()
         }
     }
+    
+    func downloadLocations(for hero: Hero, completion: @escaping () -> Void) {
+        let cdLocations = coreDataManager.fetchLocations(for: hero.id)
+        if cdLocations.isEmpty {
+            print("Locations Network Call")
+            guard let token = keychain.get("KCToken") else {
+                completion()
+                return
+            }
+            
+            networkModel.token = token
+            networkModel.getLocations(id: hero.id) { [weak self] locations, error in
+                if let error {
+                    self?.onError?("Error: \(error.localizedDescription)")
+                } else {
+                    self?.save(locations: locations, for: hero)
+                }
+                completion()
+            }
+        } else {
+            completion()
+        }
+    }
 }
 
                                             
@@ -142,29 +162,10 @@ private extension HeroesTableViewModel {
         _ = transformations.map { CDTransformation.create(from: $0, for: cdHero, context: coreDataManager.context) }
         coreDataManager.saveContext()
     }
+    
+    func save(locations: [Location], for hero: Hero) {
+        guard let cdHero = coreDataManager.fetchHero(id: hero.id) else { return }
+        _ = locations.map { CDLocation.create(from: $0, for: cdHero, context: coreDataManager.context) }
+        coreDataManager.saveContext()
+    }
 }
-
-//
-//func foo(completion: @escaping () -> Void) {
-//     let group = DispatchGroup()
-//     
-//     group.enter()
-//     self.fetchData1() {
-//         // code
-//         group.leave()
-//     }
-//
-//     group.enter()
-//     self.fetchData2() {
-//         // code
-//         group.leave()
-//     }
-//
-//     group.notify(queue: .main) {
-//         DispatchQueue.main.async {
-//          // code
-//          return completion() //yeah... idk why it's written like this
-//         }
-//     }
-//
-//}
