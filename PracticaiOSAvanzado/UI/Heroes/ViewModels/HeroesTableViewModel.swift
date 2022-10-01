@@ -76,6 +76,7 @@ final class HeroesTableViewModel {
                     
                     let group = DispatchGroup()
 //
+                    //Como podrias hacerlo asi todo junto 
 //                    heroes.forEach { hero in
 //                        group.enter()
 //                        self?.downloadLocations(for: hero) {
