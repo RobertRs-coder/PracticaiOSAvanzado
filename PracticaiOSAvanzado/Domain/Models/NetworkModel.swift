@@ -125,7 +125,7 @@ class NetworkModel {
         }
     }
     
-    func getLocations(id: String, completion: @escaping ([Location], Error?) -> Void) {
+    func getLocations(id: String, completion: @escaping ([Location], NetworkError?) -> Void) {
         let urlString = "\(server)/heros/locations"
         
         struct Body: Encodable {
