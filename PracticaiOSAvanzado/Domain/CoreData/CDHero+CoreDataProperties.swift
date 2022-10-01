@@ -2,7 +2,7 @@
 //  CDHero+CoreDataProperties.swift
 //  PracticaiOSAvanzado
 //
-//  Created by Roberto Rojo Sahuquillo on 30/9/22.
+//  Created by Roberto Rojo Sahuquillo on 1/10/22.
 //
 //
 
@@ -21,25 +21,8 @@ extension CDHero {
     @NSManaged public var id: String
     @NSManaged public var name: String
     @NSManaged public var photoUrl: URL
-    @NSManaged public var transformations: NSSet?
     @NSManaged public var locations: NSSet?
-
-}
-
-// MARK: Generated accessors for transformations
-extension CDHero {
-
-    @objc(addTransformationsObject:)
-    @NSManaged public func addToTransformations(_ value: CDTransformation)
-
-    @objc(removeTransformationsObject:)
-    @NSManaged public func removeFromTransformations(_ value: CDTransformation)
-
-    @objc(addTransformations:)
-    @NSManaged public func addToTransformations(_ values: NSSet)
-
-    @objc(removeTransformations:)
-    @NSManaged public func removeFromTransformations(_ values: NSSet)
+    @NSManaged public var transformations: NSSet?
 
 }
 
@@ -57,6 +40,23 @@ extension CDHero {
 
     @objc(removeLocations:)
     @NSManaged public func removeFromLocations(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for transformations
+extension CDHero {
+
+    @objc(addTransformationsObject:)
+    @NSManaged public func addToTransformations(_ value: CDTransformation)
+
+    @objc(removeTransformationsObject:)
+    @NSManaged public func removeFromTransformations(_ value: CDTransformation)
+
+    @objc(addTransformations:)
+    @NSManaged public func addToTransformations(_ values: NSSet)
+
+    @objc(removeTransformations:)
+    @NSManaged public func removeFromTransformations(_ values: NSSet)
 
 }
 

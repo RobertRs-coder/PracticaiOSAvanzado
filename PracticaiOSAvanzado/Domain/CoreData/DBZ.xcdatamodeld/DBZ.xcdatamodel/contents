@@ -17,7 +17,7 @@
     <entity name="CDLocation" representedClassName="CDLocation" syncable="YES">
         <attribute name="id" attributeType="String"/>
         <attribute name="latitud" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="longitud" attributeType="String"/>
+        <attribute name="longitud" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDHero" inverseName="locations" inverseEntity="CDHero"/>
         <fetchIndex name="byPropertyIndex">
             <fetchIndexElement property="hero" type="Binary" order="ascending"/>

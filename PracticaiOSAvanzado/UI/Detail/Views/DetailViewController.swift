@@ -26,6 +26,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var transformationsButton: UIButton!
+    @IBOutlet weak var locationsButton: UIButton!
     
     //MARK: Variables
     private var hero: Hero?
@@ -54,8 +55,11 @@ final class DetailViewController: UIViewController {
             
                 viewModel.onSuccess = { [weak self] in
                     DispatchQueue.main.async {
-                        let transformationsCount = self?.viewModel.content?.count
+                        let transformationsCount = self?.viewModel.tranformationsContent?.count
                         self?.transformationsButton.isHidden = transformationsCount == 0
+                        
+                        let locationsCount = self?.viewModel.locationsContent?.count
+                        self?.locationsButton.isHidden = locationsCount == 0
                     }
                 }
                 viewModel.viewDidLoad()
@@ -81,12 +85,20 @@ final class DetailViewController: UIViewController {
     }
 
     @IBAction func onTransformationTap(_ sender: UIButton) {
-        guard let transformations = viewModel.content else {
+        guard let transformations = viewModel.tranformationsContent else {
             return
         }
         //Now that we have the transformations at this point, we could pass the transformations array here
         let nextVC = TransformationsTableViewController()
         nextVC.set(model: transformations)
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    @IBAction func onLocationsTap(_ sender: Any) {
+        guard let locations = viewModel.locationsContent else {
+            return
+        }
+        let nextVC = MapViewController()
+        nextVC.set(model: locations)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

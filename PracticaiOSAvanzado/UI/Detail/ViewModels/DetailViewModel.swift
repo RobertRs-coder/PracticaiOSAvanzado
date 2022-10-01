@@ -11,17 +11,20 @@ import KeychainSwift
 
 final class DetailViewModel {
     
-    private (set) var content: [Transformation]?
+    private (set) var tranformationsContent: [Transformation]?
+    private (set) var locationsContent: [Location]?
     var hero: Hero?
     private var coreDataManager: CoreDataManager
     var onSuccess: (() -> Void)?
     
     init(hero: Hero? = nil,
-         content: [Transformation]? = nil,
+         tranformationsContent: [Transformation]? = nil,
+         locationsContent: [Location]? = nil,
          coreDataManager: CoreDataManager = .shared,
          onSuccess: ( () -> Void)? = nil) {
         self.hero = hero
-        self.content = content
+        self.tranformationsContent = tranformationsContent
+        self.locationsContent = locationsContent
         self.coreDataManager = coreDataManager
         self.onSuccess = onSuccess
     }
@@ -33,14 +36,25 @@ final class DetailViewModel {
         
         print("Transformations from CD")
         
-        content = cdTransformations.map { $0.transformation }
+        tranformationsContent = cdTransformations.map { $0.transformation }
             .sorted {
                 $0.name.localizedStandardCompare($1.name) == .orderedAscending
             }
-        onSuccess?()
+        
+    }
+    
+    func loadLocations() {
+        guard let hero = hero else { return }
+        let cdLocations = coreDataManager.fetchLocations(for: hero.id)
+        
+        print("Locations from CD")
+        
+        locationsContent = cdLocations.map { $0.location }
     }
         
     func viewDidLoad() {
+        loadLocations()
         loadTransformations()
+        onSuccess?()
     }
 }

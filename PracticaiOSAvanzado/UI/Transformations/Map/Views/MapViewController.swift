@@ -13,6 +13,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    //MARK: Variables
+    
+    private var locations: [Location] = []
+    
     //MARK: Constants
     let viewModel = MapViewModel()
     
@@ -22,26 +27,29 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        viewModel.onError = { message in
-            print(message)
-        }
+        self.title = "Transformations"
+        
+
         
         viewModel.onSuccess = { [weak self] in
             DispatchQueue.main.async {
-                //
+                self?.loadLocations()
             }
         }
         
         viewModel.vieWDidLoad()
     }
     
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupMap()
-        viewModel.getHeroesAnnotations { arrayAnnotations in
-            mapView.addAnnotations(arrayAnnotations)
+    func set(model: [Location]) {
+        self.locations = model
+    }
     
+
+    func loadLocations () {
+        setupMap()
+        viewModel.getHeroAnnotations(locations: locations) { arrayAnnotations in
+            mapView.addAnnotations(arrayAnnotations)
+
         }
     }
     

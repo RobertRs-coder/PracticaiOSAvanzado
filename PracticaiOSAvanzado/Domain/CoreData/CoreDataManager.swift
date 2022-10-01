@@ -79,8 +79,8 @@ final class CoreDataManager {
     func fetchLocations(for heroId: String) -> [CDLocation] {
         let fetchRequest = CDLocation.createFetchRequest()
         let predicate = NSPredicate(format: "hero.id == %@", heroId)
-        let sort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
-        fetchRequest.sortDescriptors = [sort]
+//        let sort = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare))
+//        fetchRequest.sortDescriptors = [sort]
         fetchRequest.predicate = predicate
         
         do {

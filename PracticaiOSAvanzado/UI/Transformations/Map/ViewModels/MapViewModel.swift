@@ -19,20 +19,17 @@ final class MapViewModel {
     private var keychain: KeychainSwift
     private var coreDataManager: CoreDataManager
 
-    var onError: ((String) -> Void)?
     var onSuccess: (() -> Void)?
     
     init(networkModel: NetworkModel = NetworkModel(),
          locationManager: CLLocationManager = CLLocationManager(),
          keychain: KeychainSwift = KeychainSwift(),
          coreDataManager: CoreDataManager = .shared,
-         onError: ( (String) -> Void)? = nil,
          onSuccess: ( () -> Void)? = nil) {
         self.networkModel = networkModel
         self.locationManager = locationManager
         self.keychain = keychain
         self.coreDataManager = coreDataManager
-        self.onError = onError
         self.onSuccess = onSuccess
     }
     
@@ -41,21 +38,24 @@ final class MapViewModel {
     
     //MARK: Cycle of Life
     func vieWDidLoad() {
-
+        checkLocationServices()
+        checkLocationAuthorization()
+        
+        onSuccess?()
     }
         
 
     //MARK: MapKit
-    func getHeroesAnnotations(completion: ([MKPointAnnotation]) -> Void) {
+    func getHeroAnnotations(locations: [Location], completion: ([MKPointAnnotation]) -> Void) {
         
         var annotationsArray: [ MKPointAnnotation ] = []
 //        getHeroesCoreData()
         
-        for hero in heroes {
+        for location in locations {
             let annotations = MKPointAnnotation()
-            annotations.title = hero.name
-            annotations.coordinate = CLLocationCoordinate2D(latitude: hero.latitud ?? 0.0, longitude: hero.longitud ?? 0.0)
+            annotations.coordinate = CLLocationCoordinate2D(latitude: location.latitud , longitude: location.longitud )
             annotationsArray.append(annotations)
+            print(annotations)
         }
         completion(annotationsArray)
     }
