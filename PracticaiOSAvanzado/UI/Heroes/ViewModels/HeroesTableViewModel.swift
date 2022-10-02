@@ -77,29 +77,29 @@ final class HeroesTableViewModel {
                     let group = DispatchGroup()
 //
                     //Como podrias hacerlo asi todo junto 
-//                    heroes.forEach { hero in
-//                        group.enter()
-//                        self?.downloadLocations(for: hero) {
-//                            self?.downloadTransformations(for: hero) {
-//                                group.leave()
-//                            }
-//                        }
-//                    }
-                    
                     heroes.forEach { hero in
                         group.enter()
                         self?.downloadLocations(for: hero) {
-                            group.leave()
+                            self?.downloadTransformations(for: hero) {}
                         }
+                        group.leave()
                     }
-
-
-                    heroes.forEach { hero in
-                        group.enter()
-                        self?.downloadTransformations(for: hero) {
-                            group.leave()
-                        }
-                    }
+                    
+//                    heroes.forEach { hero in
+//                        group.enter()
+//                        self?.downloadLocations(for: hero) {
+//                            group.leave()
+//                        }
+//                    }
+//
+//
+//                    heroes.forEach { hero in
+//                        group.enter()
+//                        self?.downloadTransformations(for: hero) {
+//                            group.leave()
+//                        }
+//                    }
+                    
                     group.notify(queue: DispatchQueue.global()) {
                         LocalDataModel.saveSyncDate()
                         if let cdHeroes = self?.coreDataManager.fetchHeroes() {

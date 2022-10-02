@@ -46,14 +46,15 @@ final class MapViewModel {
         
 
     //MARK: MapKit
-    func getHeroAnnotations(locations: [Location], completion: ([MKPointAnnotation]) -> Void) {
+    func getHeroAnnotations(name: String, locations: [Location], completion: ([MKPointAnnotation]) -> Void) {
         
         var annotationsArray: [ MKPointAnnotation ] = []
 //        getHeroesCoreData()
         
         for location in locations {
             let annotations = MKPointAnnotation()
-            annotations.coordinate = CLLocationCoordinate2D(latitude: location.latitud , longitude: location.longitud )
+            annotations.title = name
+            annotations.coordinate = CLLocationCoordinate2D(latitude: Double(location.latitud) ?? 0.0 , longitude: Double(location.longitud) ?? 0.0)
             annotationsArray.append(annotations)
             print(annotations)
         }

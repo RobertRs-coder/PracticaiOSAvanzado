@@ -98,6 +98,7 @@ final class DetailViewController: UIViewController {
             return
         }
         let nextVC = MapViewController()
+        nextVC.hero = hero
         nextVC.set(model: locations)
         navigationController?.pushViewController(nextVC, animated: true)
     }

@@ -18,6 +18,8 @@ class MapViewController: UIViewController {
     
     private var locations: [Location] = []
     
+    var hero: Hero?
+    
     //MARK: Constants
     let viewModel = MapViewModel()
     
@@ -47,7 +49,8 @@ class MapViewController: UIViewController {
 
     func loadLocations () {
         setupMap()
-        viewModel.getHeroAnnotations(locations: locations) { arrayAnnotations in
+        guard let hero = hero else { return }
+        viewModel.getHeroAnnotations(name: hero.name, locations: locations) { arrayAnnotations in
             mapView.addAnnotations(arrayAnnotations)
 
         }

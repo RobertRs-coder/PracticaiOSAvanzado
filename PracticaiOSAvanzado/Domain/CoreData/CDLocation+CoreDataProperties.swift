@@ -17,8 +17,8 @@ extension CDLocation {
     }
 
     @NSManaged public var id: String
-    @NSManaged public var latitud: Double
-    @NSManaged public var longitud: Double
+    @NSManaged public var latitud: String
+    @NSManaged public var longitud: String
     @NSManaged public var hero: CDHero?
 
 }

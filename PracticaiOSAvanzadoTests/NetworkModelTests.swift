@@ -200,6 +200,49 @@ final class NetworkModelTests: XCTestCase {
         XCTAssertEqual(retrievedTransformations?.count, 0)
         XCTAssertNil(error, "there should be no error")
     }
+    
+    func testGetLocationsSuccess() {
+        
+        var retrievedLocations: [Location]?
+        var error: NetworkError?
+        
+        //Given
+        sut.token = "TokenString"
+        urlSessionMock.data = getLocationsData(resourceName: "locations")
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        //When
+        sut.getLocations(id: "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3") { locations, networkError in
+            retrievedLocations = locations
+            error = networkError
+            
+        }
+            //Then
+            XCTAssertNotNil(urlSessionMock.data)
+            XCTAssertTrue(retrievedLocations?.count ?? 0 > 0, "Should have received transformations")
+            XCTAssertNil(error, "Should no be an error")
+        }
+    
+    func testGetLocationsSuccessWithNoTransformations() {
+        var error: NetworkError?
+        var retrievedLocations: [Location]?
+        
+        //Given
+        sut.token = "testToken"
+        urlSessionMock.data = getLocationsData(resourceName: "noLocations")
+        urlSessionMock.response = HTTPURLResponse(url: URL(string: "http")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        //When
+        sut.getLocations(id: "14BB8E98-6586-4EA7-B4D7-35D6A63F5AA3") { locations, networkError in
+            error = networkError
+            retrievedLocations = locations
+        }
+        
+        //Then
+        XCTAssertNotNil(retrievedLocations)
+        XCTAssertEqual(retrievedLocations?.count, 0)
+        XCTAssertNil(error, "there should be no error")
+    }
 }
 
 extension NetworkModelTests {
@@ -214,6 +257,15 @@ extension NetworkModelTests {
     }
     
     func getTransformationsData(resourceName: String) -> Data? {
+        
+        let bundle = Bundle(for: NetworkModelTests.self)
+        
+        guard let path = bundle.path(forResource: resourceName, ofType: "json") else { return nil}
+        
+        return try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+    }
+    
+    func getLocationsData(resourceName: String) -> Data? {
         
         let bundle = Bundle(for: NetworkModelTests.self)
         
